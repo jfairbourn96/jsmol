@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	align-content: center;
+	background-color: darkgray;
+	display: flex;
+	flex-direction: column;
+	font-family: Arial;
+	justify-content: center;
+}
+#name {
+
+	font-size: 35px;
+	font-weight: bold;
+}
+#window {
+	height: 500px;
+	width: 500px;
+}
+#controls {
+	width: 500px;
+}
+.app {
+	align-self: center;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 7px 7px 5px black;
+	margin: 5px;
+	padding: 6px;
+}
+.option {
+	display: flex;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+.option > strong {
+	text-align: right;
+	flex-basis: 150px;
+}
