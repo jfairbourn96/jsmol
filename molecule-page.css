@@ -1,12 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 body {
-	align-content: center;
-	background-color: darkgray;
-	display: flex;
-	flex-direction: column;
 	font-family: Arial;
-	justify-content: center;
+	background-color: darkgray;
+}
+#controls {
+	width: 500px;
 }
 #name {
 
@@ -17,9 +16,6 @@ body {
 	height: 500px;
 	width: 500px;
 }
-#controls {
-	width: 500px;
-}
 .app {
 	align-self: center;
 	background-color: white;
@@ -27,6 +23,17 @@ body {
 	box-shadow: 7px 7px 5px black;
 	margin: 5px;
 	padding: 6px;
+}
+.molecule {
+	align-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.multi {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 .option {
 	display: flex;
