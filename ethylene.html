@@ -11,7 +11,7 @@
 		  height: 500,      
 		  width: 500,
 		  j2sPath: "jsmol/j2s",
-		  script: "load PDB/ethylene.pdb; spacefill 20%; wireframe 0.15; spin on; frank on; background=white; antialiasDisplay=true;",
+		  script: "load PDB/ethene.mol; spacefill 20%; wireframe 0.15; spin on; frank on; background=white; antialiasDisplay=true;",
 		  debug: false
 		};
 	</script>
@@ -85,6 +85,14 @@
 				Jmol.jmolCheckbox(main,"if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent", "isosurface off", "");
 			</script>
 			<label for="partial_charge">Partial Charges</label>
+		</div>
+		
+		<div id="control_orbitals" class="option">
+			<strong>Show Orbitals:</strong>
+			
+			<script>
+				Jmol.jmolCheckbox()
+			</script>
 		</div>
 	</div>
 </body>
