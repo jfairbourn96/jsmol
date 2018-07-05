@@ -85,7 +85,37 @@
 				Jmol.jmolCheckbox(main,"if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent", "isosurface off", "");
 			</script>
 			<label for="partial_charge">Partial Charges</label>
+			
+			<script>
+				Jmol.jmolCheckbox(main, "set showMultipleBonds ON;", "set showMultipleBonds OFF;", "", true)
+			</script>
+			<label for="multiple_bonds">Triple Bond</label>
+		</div>
+		
+		<div id="control_orbitals" class="option">
+			<strong>Show Orbitals:</strong>
+			
+			<button onclick="javascript:Jmol.script(main, 'select (carbon); lcaoCartoon DELETE;');">
+				CLEAR
+			</button>
+			
+<!--
+			<button onclick="javascript:Jmol.script(main, 'select (carbon); lcaoCartoon color orange create sp2a create sp2b create sp2c;');">
+				sp2 framework
+			</button>
+-->
+			
+			<button onclick="javascript:Jmol.script(main, 'select (carbon); lcaoCartoon color blue red create pz')">
+				p orbitals
+			</button>
+			
+<!--
+			<button onclick="javascript:Jmol.script(main, 'select (carbon); lcaoCartoon ')">
+				pi orbitals
+			</button>
+-->
 		</div>
 	</div>
+	
 </body>
 </html>

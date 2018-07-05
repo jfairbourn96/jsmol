@@ -3,9 +3,11 @@
 body {
 	font-family: Arial;
 	background-color: darkgray;
+	white-space: nowrap;
 }
 #controls {
-	width: 500px;
+	display: flex;
+	flex-direction: column;
 }
 #name {
 
@@ -24,7 +26,7 @@ body {
 	margin: 5px;
 	padding: 6px;
 }
-.molecule {
+.molecule, .notes {
 	align-content: center;
 	display: flex;
 	flex-direction: column;
@@ -40,7 +42,12 @@ body {
 	margin-top: 3px;
 	margin-bottom: 3px;
 }
+.option > button {
+	margin-left: 2px;
+	margin-right: 2px;
+}
 .option > strong {
 	text-align: right;
-	flex-basis: 150px;
+	width: 150px;
+
 }

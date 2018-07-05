@@ -72,6 +72,7 @@
 			</script>
 		</div>
 		
+<!--		TODO: Change this to be a Radio group rather than checkboxes. -->
 		<div id="control_special" class="option">
 			<strong>Show Special:</strong>
 			
@@ -80,19 +81,39 @@
 			</script>
 			<label for="isosurface">Isosurface</label>
 			
-			<!-- This script doesn't do anything, as ethane does not have partial charges? -->
 			<script>
 				Jmol.jmolCheckbox(main,"if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent", "isosurface off", "");
 			</script>
 			<label for="partial_charge">Partial Charges</label>
+			
+			<script>
+				Jmol.jmolCheckbox(main, "set showMultipleBonds ON;", "set showMultipleBonds OFF;", "", true)
+			</script>
+			<label for="multiple_bonds">Double Bond</label>
 		</div>
 		
+
 		<div id="control_orbitals" class="option">
 			<strong>Show Orbitals:</strong>
 			
-			<script>
-				Jmol.jmolCheckbox()
-			</script>
+			<button onclick="javascript:Jmol.script(main, 'select (carbon); lcaoCartoon DELETE;');">
+				CLEAR
+			</button>
+			
+			<button onclick="javascript:Jmol.script(main, 'select (carbon); lcaoCartoon color orange create sp2a create sp2b create sp2c;');">
+				sp2 framework
+			</button>
+			
+			<button onclick="javascript:Jmol.script(main, 'select (carbon); lcaoCartoon color blue red create pz')">
+				p orbitals
+			</button>
+			
+<!--
+TODO: Figure out the 'mo 8' command
+			<button onclick="javascript:Jmol.script(main, 'select (carbon); lcaoCartoon ')">
+				pi orbitals
+			</button>
+-->
 		</div>
 	</div>
 </body>
