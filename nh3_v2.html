@@ -17,93 +17,97 @@
 	</script>
 </head>
 <body>
-	<header></header>
-	
-	<aside class="notes">
-		<strong>Structure of ammonia, NH3.</strong> NH3 contains 3 bonded and one nonbonded electron domains, giving a tetrahedral e- domain geometry and a trigonal pyramidal molecular geometry. (AX3E). The H-N-H bond angles (107 degrees) are less than in a perfect tetrahedron because the lone pair electrons spread out more in space than bonded electron pairs, compressing the bond angle. A cartoon model of the electron density of the lone pair of electrons, represented by a translucent green spheroid, can be toggled on and off. Note that the shape of the spheroid does not represent the actual electron density of the lone pair, but allows you to visualize how the presence of that lone pair dictates the molecular geometry.
-	</aside>
-	
-	<section class="molecule">
+	<header>
 		<div id="name" class="app">
 			Ammonia: NH<sub>3</sub>
 		</div>
+	</header>
+	
+	<main>
+		<aside class="notes app">
+			<strong>Structure of ammonia, NH3.</strong> NH3 contains 3 bonded and one nonbonded electron domains, giving a tetrahedral e- domain geometry and a trigonal pyramidal molecular geometry. (AX3E). The H-N-H bond angles (107 degrees) are less than in a perfect tetrahedron because the lone pair electrons spread out more in space than bonded electron pairs, compressing the bond angle. A cartoon model of the electron density of the lone pair of electrons, represented by a translucent green spheroid, can be toggled on and off. Note that the shape of the spheroid does not represent the actual electron density of the lone pair, but allows you to visualize how the presence of that lone pair dictates the molecular geometry.
+		</aside>
 
-		<div id="window" class="app">
-			<script type="text/javascript">
-				Jmol.getApplet("main", info);
-			</script>
-		</div>
+		<section class="molecule">
 
-		<div id="controls" class="app">
 
-			<div id="control_bg" class="option">
-				<strong>Background Color:</strong>
-
-				<input type="radio" id="bg_black" name="bg_color" 
-					   onclick="javascript:Jmol.script(main, 'background black;');">
-				<label for="bg_black">Black</label>
-
-				<input type="radio" id="bg_white" name="bg_color" checked="checked"
-					   onclick="javascript:Jmol.script(main, 'background white;');">
-				<label for="bg_white">White</label>
-
-				<input type="radio" id="bg_grey" name="bg_color"
-					   onclick="javascript:Jmol.script(main, 'background grey;');">
-				<label for="bg_grey">Grey</label>
-			</div>
-
-			<div id="control_model_type" class="option">
-				<strong>Model Type:</strong>
-
-				<input type="radio" id="mt_spacefill" name="model_type"
-					   onclick="javascript:Jmol.script(main, 'spacefill 100%;');">
-				<label for="mt_spacefill">Spacefill</label>
-
-				<input type="radio" id="mt_ballstick" name="model_type" 
-					   checked="checked"
-					   onclick="javascript:Jmol.script(main,
-								'wireframe 0.15; spacefill 20% ');">
-				<label for="mt_ballstick">Ball and Stick</label>
-
-				<input type="radio" id="mt_stick" name="model_type" 
-					   onclick="javascript:Jmol.script(main, 
-								'wireframe 0.2; spacefill off; ');">
-				<label for="mt_stick">Stick Only</label>
-			</div>
-
-			<div id="control_surfaces" class="option">
-				<strong>Show Surfaces:</strong>
-				<input type="radio" id="cs_none" name="surfaces" checked="checked"
-					   onclick="javascript:Jmol.script(main, 'isosurface off;')">
-				<label for="cs_none">None</label>
-				
-				<input type="radio" id="cs_isosurface" name="surfaces"
-					   onclick="javascript:Jmol.script(main, 'isosurface off;  isosurface vdw; isosurface translucent;')">
-				<label for="cs_isosurface">Isosurface</label>
-				
-				<input type="radio" id="cs_pcharge" name="surfaces"
-					   onclick="javascript:Jmol.script(main, 'isosurface off; if ({atomno < 10}.partialcharge == 0){calculate partialcharge}; isosurface vdw map mep; isosurface translucent;')">
-				<label for="cs_pcharge">Partial Charges</label>
-				
-				<input type="radio" id="cs_lonepair" name="surfaces"
-					   onclick="javascript:Jmol.script(main, 'isosurface off; isosurface center (atomno=1) color translucent [28,170,31] scale 1.85 lobe {-0.56 -0.96 -0.39 0.6};')">
-				<label for="cs_lonepair">Lone Pair</label>
-			</div>
-			
-			<div id="control_other" class="option">
-				<strong>Show Other:</strong>
-				
-				<script id="co_spin">
-					Jmol.jmolCheckbox(main, "spin on;", "spin off", "", true);
+			<div id="window" class="app">
+				<script type="text/javascript">
+					Jmol.getApplet("main", info);
 				</script>
-				<label for="co_spin">Spin</label>
-				
-				<script id="co_measure">
-					Jmol.jmolCheckbox(main,"measure ({1}) ({0}) ({2});", "measure off;", "", false);
-				</script>
-				<label for="co_measure">Bond Angle</label>
 			</div>
-		</div>
-	</section>
+
+			<div id="controls" class="app">
+
+				<div id="control_bg" class="option">
+					<strong>Background Color:</strong>
+
+					<input type="radio" id="bg_black" name="bg_color" 
+						   onclick="javascript:Jmol.script(main, 'background black;');">
+					<label for="bg_black">Black</label>
+
+					<input type="radio" id="bg_white" name="bg_color" checked="checked"
+						   onclick="javascript:Jmol.script(main, 'background white;');">
+					<label for="bg_white">White</label>
+
+					<input type="radio" id="bg_grey" name="bg_color"
+						   onclick="javascript:Jmol.script(main, 'background grey;');">
+					<label for="bg_grey">Grey</label>
+				</div>
+
+				<div id="control_model_type" class="option">
+					<strong>Model Type:</strong>
+
+					<input type="radio" id="mt_spacefill" name="model_type"
+						   onclick="javascript:Jmol.script(main, 'spacefill 100%;');">
+					<label for="mt_spacefill">Spacefill</label>
+
+					<input type="radio" id="mt_ballstick" name="model_type" 
+						   checked="checked"
+						   onclick="javascript:Jmol.script(main,
+									'wireframe 0.15; spacefill 20% ');">
+					<label for="mt_ballstick">Ball and Stick</label>
+
+					<input type="radio" id="mt_stick" name="model_type" 
+						   onclick="javascript:Jmol.script(main, 
+									'wireframe 0.2; spacefill off; ');">
+					<label for="mt_stick">Stick Only</label>
+				</div>
+
+				<div id="control_surfaces" class="option">
+					<strong>Show Surfaces:</strong>
+					<input type="radio" id="cs_none" name="surfaces" checked="checked"
+						   onclick="javascript:Jmol.script(main, 'isosurface off;')">
+					<label for="cs_none">None</label>
+
+					<input type="radio" id="cs_isosurface" name="surfaces"
+						   onclick="javascript:Jmol.script(main, 'isosurface off;  isosurface vdw; isosurface translucent;')">
+					<label for="cs_isosurface">Isosurface</label>
+
+					<input type="radio" id="cs_pcharge" name="surfaces"
+						   onclick="javascript:Jmol.script(main, 'isosurface off; if ({atomno < 10}.partialcharge == 0){calculate partialcharge}; isosurface vdw map mep; isosurface translucent;')">
+					<label for="cs_pcharge">Partial Charges</label>
+
+					<input type="radio" id="cs_lonepair" name="surfaces"
+						   onclick="javascript:Jmol.script(main, 'isosurface off; isosurface center (atomno=1) color translucent [28,170,31] scale 1.85 lobe {-0.56 -0.96 -0.39 0.6};')">
+					<label for="cs_lonepair">Lone Pair</label>
+				</div>
+
+				<div id="control_other" class="option">
+					<strong>Show Other:</strong>
+
+					<script id="co_spin">
+						Jmol.jmolCheckbox(main, "spin on;", "spin off", "", true);
+					</script>
+					<label for="co_spin">Spin</label>
+
+					<script id="co_measure">
+						Jmol.jmolCheckbox(main,"measure ({1}) ({0}) ({2});", "measure off;", "", false);
+					</script>
+					<label for="co_measure">Bond Angle</label>
+				</div>
+			</div>
+		</section>
+	</main>
 </body>
 </html>
