@@ -11,35 +11,102 @@
 			height: 500,      
 			width: 500,
 			j2sPath: "jsmol/j2s",
-			script: "load PDB/h2o-liquid.pdb; spacefill 20%; wireframe 0.15; spin off; frank on; background=white; antialiasDisplay=true;",
+			// Change the initial molecule here.
+			script: "load PDB/h2o.pdb; spacefill 20%; wireframe 0.15; spin off; frank on; background=white; antialiasDisplay=true;",
 			debug: false
 		};
-		
-//		credit to: https://stackoverflow.com/questions/3487263/how-to-use-onclick-or-onselect-on-option-tag-in-a-jsp-page
+	</script>
+</head>
+
+<body>
+	<header>
+		<div id="name" class="app">
+			States and Structure of H<sub>2</sub>O
+		</div>
+	</header>
+	
+	<main>
+		<section class="molecule">
+
+			<div id="window" class="app">
+				<script type="text/javascript">
+					Jmol.getApplet("main", info);
+				</script>
+			</div>
+
+			<div id="controls" class="app">
+				<div id="control_state" class="option">
+					<strong>State:</strong>
+					
+					<select name="state" id="h2o_state" onChange="loadNew(this.value);">
+						<option value="PDB/h2o-ice.pdb">Solid: Ice</option>
+						<option value="PDB/h2o-ice-hex.pdb">Solid: Ice (Hex)</option>
+						<option value="PDB/h2o-liquid.pdb">Liquid: Water</option>
+						<option value="PDB/h2o.pdb" selected="selected">Single Molecule</option>
+<!--					To add more options, simply fill in the following new option tag: -->
+<!--					<option value="{{path to pdb}}">{{Name}}</option>-->
+					</select>
+				</div>
+
+				<div id="control_bg" class="option">
+					<strong>Background Color:</strong>
+					
+					<input type="radio" name="bg_color" id="bg_white" onclick="changeColor('white');" checked="checked">
+					<label for="bg_white">White</label>
+
+					<input type="radio" name="bg_color" id="bg_black" onclick="changeColor('black');">
+					<label for="bg_black">Black</label>
+
+					<input type="radio" name="bg_color" id="bg_grey" onclick="changeColor('grey');">
+					<label for="bg_grey">Grey</label>
+					
+<!--				
+					Follow this template to add more colors: 
+					<input type="radio" name="bg_color" id="{{NEW ID}}" onclick="changeColor('{{NEW COLOR}}');">
+					<label for="{{NEW ID}}">{{NEW LABEL}}</label>
+-->
+				</div>
+
+				<div id="control_model_type" class="option">
+					<strong>Model Type:</strong>
+					
+					<input type="radio" name="model_type" id="mt_ballstick" onclick="ballAndStick();" checked="checked">
+					<label for="mt_ballstick">Ball and Stick</label>
+
+					<input type="radio" name="model_type" id="mt_spacefill" onclick="spacefill();">
+					<label for="mt_spacefill">Spacefill</label>
+
+					<input type="radio" name="model_type" id="mt_stick" onclick="stick();">
+					<label for="mt_stick">Stick Only</label>
+					
+<!--
+					Follow this template to add more configurations:
+					<input type="radio" name="model_type" id="{{NEW ID}}" onclick="{{NEW FUNCTION}}">
+					<label for="{{NEW ID}}">{{NEW LABEL}}</label>
+-->
+				</div>
+
+				<div id="control_other" class="option">
+					<strong>Show Other:</strong>
+					
+					<input type="checkbox" name="co_spin" id="co_spin" onClick="toggleSpin();">
+					<label for="co_spin">Spin</label>
+				</div>
+			</div>
+		</section>
+	</main>
+	
+	<script>
+		// Functions so none of the html actually touches anything to do with JSmol directly.
 		
 		// Resets the inputs and loads the appropriate pdb file.
-		function loadNew() {
+		function loadNew(pdbFile) {
 			// TODO: If Dr. Ensign provides separate descriptions that he would like associated with each of the different states, also change the state of a variable to be those descriptions, and then simply display said variable in the aside.
-			var selectElement = document.getElementById("h2o_state");
-			var selectedValue = selectElement.options[selectElement.selectedIndex].value;
+			var loadString = "load " + pdbFile + ";";
 			
 			document.getElementById("mt_ballstick").checked = true;
 			document.getElementById("co_spin").checked = false;
-			
-			// New files can be added by adding another case and associated option/value pair in the HTML select element.
-			switch(parseInt(selectedValue)) {
-				case 1:
-					Jmol.script(main, 'load PDB/h2o-ice.pdb;');
-					break;
-				case 2:
-					Jmol.script(main, 'load PDB/h2o-ice-hex.pdb;');
-					break;
-				case 3:
-					Jmol.script(main, 'load PDB/h2o-liquid.pdb;');
-					break;
-				default:
-					Jmol.script(main, 'load PDB/h2o-liquid.pdb;');
-			}
+			Jmol.script(main, loadString);
 		}
 		
 		function toggleSpin() {
@@ -62,77 +129,16 @@
 			Jmol.script(main, 'wireframe 0.2; spacefill off;');
 		}
 		
+// 		Create more functions by following this template:
+//		
+//		function function_name() {
+//			Jmol.script(main, 'Jmol_command_string');
+//		}
+		
 		function changeColor(color) {
-			
+			var colorString = 'background ' + color + ';';
+			Jmol.script(main, colorString);
 		}
 	</script>
-</head>
-
-<body>
-	<header>
-		<div id="name" class="app">
-			States and Structure of H<sub>2</sub>O
-		</div>
-	</header>
-	
-	<main>
-		<section class="molecule">
-
-
-			<div id="window" class="app">
-				<script type="text/javascript">
-					Jmol.getApplet("main", info);
-				</script>
-			</div>
-
-			<div id="controls" class="app">
-				<div id="control_state" class="option">
-					<strong>State:</strong>
-					
-					<select name="state" id="h2o_state" onChange="loadNew();">
-						<option value="1">Solid: Ice</option>
-						<option value="2">Solid: Ice (Hex)</option>
-						<option value="3" selected="selected">Liquid: Water</option>
-					</select>
-				</div>
-
-				<div id="control_bg" class="option">
-					<strong>Background Color:</strong>
-
-					<input type="radio" id="bg_black" name="bg_color"
-						   onclick="javascript:Jmol.script(main, 'background black;');">
-					<label for="bg_black">Black</label>
-
-					<input type="radio" id="bg_white" name="bg_color" checked="checked" value="white"
-						   onclick="javascript:Jmol.script(main, 'background white;');">
-					<label for="bg_white">White</label>
-
-					<input type="radio" id="bg_grey" name="bg_color"
-						   onclick="javascript:Jmol.script(main, 'background grey;');">
-					<label for="bg_grey">Grey</label>
-				</div>
-
-				<div id="control_model_type" class="option">
-					<strong>Model Type:</strong>
-					
-					<input type="radio" id="mt_ballstick" name="model_type" checked="checked" onclick="ballAndStick();">
-					<label for="mt_ballstick">Ball and Stick</label>
-
-					<input type="radio" id="mt_spacefill" name="model_type" onclick="spacefill();">
-					<label for="mt_spacefill">Spacefill</label>
-
-					<input type="radio" id="mt_stick" name="model_type" onclick="stick();">
-					<label for="mt_stick">Stick Only</label>
-				</div>
-
-				<div id="control_other" class="option">
-					<strong>Show Other:</strong>
-					
-					<input type="checkbox" name="co_spin" id="co_spin" onClick="toggleSpin();">
-					<label for="co_spin">Spin</label>
-				</div>
-			</div>
-		</section>
-	</main>
 </body>
 </html>
