@@ -49,6 +49,22 @@
 				Jmol.script(main, 'spin off;');
 			}
 		}
+		
+		function ballAndStick() {
+			Jmol.script(main, 'wireframe 0.15; spacefill 20%');
+		}
+		
+		function spacefill() {
+			Jmol.script(main, 'spacefill 100%;');
+		}
+		
+		function stick() {
+			Jmol.script(main, 'wireframe 0.2; spacefill off;');
+		}
+		
+		function changeColor(color) {
+			
+		}
 	</script>
 </head>
 
@@ -77,7 +93,6 @@
 						<option value="1">Solid: Ice</option>
 						<option value="2">Solid: Ice (Hex)</option>
 						<option value="3" selected="selected">Liquid: Water</option>
-<!--						<option value=""></option>-->
 					</select>
 				</div>
 
@@ -99,20 +114,14 @@
 
 				<div id="control_model_type" class="option">
 					<strong>Model Type:</strong>
-
-					<input type="radio" id="mt_spacefill" name="model_type"
-						   onclick="javascript:Jmol.script(main, 'spacefill 100%;');">
-					<label for="mt_spacefill">Spacefill</label>
-
-					<input type="radio" id="mt_ballstick" name="model_type" 
-						   checked="checked"
-						   onclick="javascript:Jmol.script(main,
-									'wireframe 0.15; spacefill 20% ');">
+					
+					<input type="radio" id="mt_ballstick" name="model_type" checked="checked" onclick="ballAndStick();">
 					<label for="mt_ballstick">Ball and Stick</label>
 
-					<input type="radio" id="mt_stick" name="model_type" 
-						   onclick="javascript:Jmol.script(main, 
-									'wireframe 0.2; spacefill off; ');">
+					<input type="radio" id="mt_spacefill" name="model_type" onclick="spacefill();">
+					<label for="mt_spacefill">Spacefill</label>
+
+					<input type="radio" id="mt_stick" name="model_type" onclick="stick();">
 					<label for="mt_stick">Stick Only</label>
 				</div>
 
