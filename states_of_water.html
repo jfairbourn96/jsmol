@@ -18,6 +18,7 @@
 //		credit to: https://stackoverflow.com/questions/3487263/how-to-use-onclick-or-onselect-on-option-tag-in-a-jsp-page
 		function loadNew() {
 			// TODO: If Dr. Ensign provides separate descriptions that he would like associated with each of the different states, also change the state of a variable to be those descriptions, and then simply display said variable in the aside.
+			// TODO: Cause the 'spacefill' option to be selected on the control_model_type option group.
 			var select = document.getElementById("h2o_state");
 			var selectValue = select.options[select.selectedIndex].value;
 			console.log(selectValue);
@@ -135,6 +136,7 @@
 -->
 
 				<div id="control_other" class="option">
+<!--					TODO: Change this to be a regular checkbox that turns off when a new pdb is loaded. -->
 					<strong>Show Other:</strong>
 
 					<script id="co_spin">
