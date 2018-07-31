@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Carbon Allotropes</title>
+	<link href="molecule-page.css" rel="stylesheet" type="text/css">
+	<script src="jsmol/JSmol.min.js"></script>
+	<script>
+		var info = {
+			color: "#FFFFFF", 
+			height: 500,      
+			width: 500,
+			j2sPath: "jsmol/j2s",
+			// Change the initial molecule here.
+			script: "load PDB/graphite.pdb; spacefill 20%; wireframe 0.15; spin off; frank on; background=white; antialiasDisplay=true;",
+			debug: false
+		};
+	</script>
+</head>
+
+<body>
+	<header>
+		<div id="name" class="app">
+			Carbon Allotropes
+		</div>
+	</header>
+	
+	<main>
+		<section class="molecule">
+
+			<div id="window" class="app">
+				<script type="text/javascript">
+					Jmol.getApplet("main", info);
+				</script>
+			</div>
+
+			<div id="controls" class="app">
+				<div id="control_state" class="option">
+					<strong>State:</strong>
+					
+					<select name="state" id="h2o_state" onChange="loadNew(this.value);">
+						<option value="PDB/buckyball.pdb">Buckyball</option>
+						<option value="PDB/diamond.pdb">Diamond</option>
+						<option value="PDB/graphene.pdb">Graphene</option>
+						<option value="PDB/graphene-2.pdb">Graphene (2)</option>
+						<option value="PDB/graphite.pdb" selected="selected">Graphite</option>
+						<option value="PDB/nanotube.pdb">Nanotube</option>
+
+<!--					To add more options, simply fill in the following new option tag: -->
+<!--					<option value="{{path to pdb}}">{{Name}}</option>-->
+					</select>
+				</div>
+
+				<div id="control_bg" class="option">
+					<strong>Background Color:</strong>
+					
+					<input type="radio" name="bg_color" id="bg_white" onclick="changeColor('white');" checked="checked">
+					<label for="bg_white">White</label>
+
+					<input type="radio" name="bg_color" id="bg_black" onclick="changeColor('black');">
+					<label for="bg_black">Black</label>
+
+					<input type="radio" name="bg_color" id="bg_grey" onclick="changeColor('grey');">
+					<label for="bg_grey">Grey</label>
+					
+<!--				
+					Follow this template to add more colors: 
+					<input type="radio" name="bg_color" id="{{NEW ID}}" onclick="changeColor('{{NEW COLOR}}');">
+					<label for="{{NEW ID}}">{{NEW LABEL}}</label>
+-->
+				</div>
+
+				<div id="control_model_type" class="option">
+					<strong>Model Type:</strong>
+					
+					<input type="radio" name="model_type" id="mt_ballstick" onclick="ballAndStick();" checked="checked">
+					<label for="mt_ballstick">Ball and Stick</label>
+
+					<input type="radio" name="model_type" id="mt_spacefill" onclick="spacefill();">
+					<label for="mt_spacefill">Spacefill</label>
+
+					<input type="radio" name="model_type" id="mt_stick" onclick="stick();">
+					<label for="mt_stick">Stick Only</label>
+					
+<!--
+					Follow this template to add more configurations:
+					<input type="radio" name="model_type" id="{{NEW ID}}" onclick="{{NEW FUNCTION}}">
+					<label for="{{NEW ID}}">{{NEW LABEL}}</label>
+-->
+				</div>
+
+				<div id="control_other" class="option">
+					<strong>Show Other:</strong>
+					
+					<input type="checkbox" name="co_spin" id="co_spin" onClick="toggleSpin();">
+					<label for="co_spin">Spin</label>
+				</div>
+			</div>
+		</section>
+	</main>
+	
+	<script>
+		// Functions so none of the html actually touches anything to do with JSmol directly.
+		
+		// Resets the inputs and loads the appropriate pdb file.
+		function loadNew(pdbFile) {
+			// TODO: If Dr. Ensign provides separate descriptions that he would like associated with each of the different states, also change the state of a variable to be those descriptions, and then simply display said variable in the aside.
+			var loadString = "load " + pdbFile + ";";
+			
+			document.getElementById("mt_ballstick").checked = true;
+			document.getElementById("co_spin").checked = false;
+			Jmol.script(main, loadString);
+		}
+		
+		function toggleSpin() {
+			if (document.getElementById('co_spin').checked) {
+				Jmol.script(main, 'spin on;');
+			} else {
+				Jmol.script(main, 'spin off;');
+			}
+		}
+		
+		function ballAndStick() {
+			Jmol.script(main, 'wireframe 0.15; spacefill 20%');
+		}
+		
+		function spacefill() {
+			Jmol.script(main, 'spacefill 100%;');
+		}
+		
+		function stick() {
+			Jmol.script(main, 'wireframe 0.2; spacefill off;');
+		}
+		
+// 		Create more functions by following this template:
+//		
+//		function function_name() {
+//			Jmol.script(main, 'Jmol_command_string');
+//		}
+		
+		function changeColor(color) {
+			var colorString = 'background ' + color + ';';
+			Jmol.script(main, colorString);
+		}
+	</script>
+</body>
+</html>
