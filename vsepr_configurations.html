@@ -113,7 +113,7 @@
 		// Resets the inputs and loads the appropriate pdb file.
 		function loadNew(pdbFile) {
 			// TODO: If Dr. Ensign provides separate descriptions that he would like associated with each of the different states, also change the state of a variable to be those descriptions, and then simply display said variable in the aside.
-			var loadString = "load " + pdbFile + ";";
+			var loadString = "load " + pdbFile + "; select *; spacefill 0.4;";
 			
 			document.getElementById("mt_ballstick").checked = true;
 			document.getElementById("co_spin").checked = false;
