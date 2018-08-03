@@ -39,25 +39,7 @@
 				<div id="control_state" class="option">
 					<strong>State:</strong>
 					
-					<select name="state" id="h2o_state" onChange="loadNew(this.value);">
-						<option id="vsepr01" value=vsepr_01 selected="selected">Linear</option>
-						<option id="vsepr02" value=vsepr_02>Linear (2)</option>
-						<option id="vsepr03" value=>Trigonal Planar</option>
-						<option id="vsepr04" value=>Trigonal Planar - Bent</option>
-						<option id="vsepr05" value=>Tetrahedral</option>
-						<option id="vsepr06" value=>Tetrahedral - Trigonal Pyramidal</option>
-						<option id="vsepr07" value=>Tetrahedral - Bent</option>
-						<option id="vsepr08" value=>Trigonal Bipyramidal</option>
-						<option id="vsepr09" value=>Trigonal Bipyramidal - Seesaw</option>
-						<option id="vsepr10" value=>Trigonal Bipyramidal - T-shaped</option>
-						<option id="vsepr11" value=>Trigonal Bipyramidal - Linear</option>
-						<option id="vsepr12" value=>Octahedral</option>
-						<option id="vsepr13" value=>Octahedral - Square Pyramidal</option>
-						<option id="vsepr14" value=>Octahedral - Square Planar</option>
-
-<!--					To add more options, simply fill in the following new option tag: -->
-<!--					<option value="{{path to pdb}}">{{Name}}</option>-->
-					</select>
+					<select name="state" id="configuration" onChange="loadNew();"></select>
 				</div>
 
 				<div id="control_bg" class="option">
@@ -110,34 +92,96 @@
 	
 	<script>
 		window.addEventListener("load", function(event){
-			document.getElementById("vsepr01").value = vsepr_01;
-			console.log(document.getElementById("vsepr01").value.path);	
-			document.getElementById("vsepr02").setAttribute("value", vsepr_02);
-			document.getElementById("vsepr03").value = vsepr_03;
-			document.getElementById("vsepr04").value = vsepr_04;
-			document.getElementById("vsepr05").value = vsepr_05;
-			document.getElementById("vsepr06").value = vsepr_06;
-			document.getElementById("vsepr07").value = vsepr_07;
-			document.getElementById("vsepr08").value = vsepr_08;
-			document.getElementById("vsepr09").value = vsepr_09;
-			document.getElementById("vsepr10").value = vsepr_10;
-			document.getElementById("vsepr11").value = vsepr_11;
-			document.getElementById("vsepr12").value = vsepr_12;
-			document.getElementById("vsepr13").value = vsepr_13;
-			document.getElementById("vsepr14").value = vsepr_14;
-			console.log("Finished loading and assigning variables to HTML Element values.");
+			moleculeSelect = document.getElementById("configuration");
+			
+			// each option has an associated molecule data attribute that links it to a certain JS Molecule vsepr object
+			
+			var option01 = document.createElement("option");
+			option01.molecule = vsepr_01;
+			option01.label = "Linear";
+			
+			var option02 = document.createElement("option");
+			option02.molecule = vsepr_02;
+			option02.label = "Linear (2)";
+			
+			var option03 = document.createElement("option");
+			option03.molecule = vsepr_03;
+			option03.label = "Trigonal Planar";
+			
+			var option04 = document.createElement("option");
+			option04.molecule = vsepr_04;
+			option04.label = "Trigonal Planar - Bent";
+			
+			var option05 = document.createElement("option");
+			option05.molecule = vsepr_05;
+			option05.label = "Tetrahedral";
+			
+			var option06 = document.createElement("option");
+			option06.molecule = vsepr_06;
+			option06.label = "Tetrahedral - Trigonal Pyramidal";
+			
+			var option07 = document.createElement("option");
+			option07.molecule = vsepr_07;
+			option07.label = "Tetrahedral - Bent";
+			
+			var option08 = document.createElement("option");
+			option08.molecule = vsepr_08;
+			option08.label = "Trigonal Bipyramidal";
+			
+			var option09 = document.createElement("option");
+			option09.molecule = vsepr_09;
+			option09.label = "Trigonal Bipyramidal - Seesaw";
+			
+			var option10 = document.createElement("option");
+			option10.molecule = vsepr_10;
+			option10.label = "Trigonal Bipyramidal - T-shaped";
+			
+			var option11 = document.createElement("option");
+			option11.molecule = vsepr_11;
+			option11.label = "Trigonal Bipyramidal - Linear";
+			
+			var option12 = document.createElement("option");
+			option12.molecule = vsepr_12;
+			option12.label = "Octahedral";
+			
+			var option13 = document.createElement("option");
+			option13.molecule = vsepr_13;
+			option13.label = "Octahedral - Square Pyramidal";
+			
+			var option14 = document.createElement("option");
+			option14.molecule = vsepr_14;
+			option14.label = "Trigonal Planar";
+			
+			moleculeSelect.add(option01);
+			moleculeSelect.add(option02);
+			moleculeSelect.add(option03);
+			moleculeSelect.add(option04);
+			moleculeSelect.add(option05);
+			moleculeSelect.add(option06);
+			moleculeSelect.add(option07);
+			moleculeSelect.add(option08);
+			moleculeSelect.add(option09);
+			moleculeSelect.add(option10);
+			moleculeSelect.add(option11);
+			moleculeSelect.add(option12);
+			moleculeSelect.add(option13);
+			moleculeSelect.add(option14);
 		});
 		// Functions so none of the html actually touches anything to do with JSmol directly.
 		
-		// Resets the inputs and loads the appropriate pdb file.
-		function loadNew(vsepr_object) {
-			// TODO: If Dr. Ensign provides separate descriptions that he would like associated with each of the different states, also change the state of a variable to be those descriptions, and then simply display said variable in the aside.
-			console.log(vsepr_object.formula);
-			var loadString = "load " + vsepr_object.path + "; select *; spacefill 0.4;";
+		// Resets the inputs and loads the appropriate pdb file by calling the current molecule's load path.
+		function loadNew() {
+			molecule = getCurrentMolecule();
+			var loadString = "load " + molecule.path + "; select *; spacefill 0.4;";
 			
 			document.getElementById("mt_ballstick").checked = true;
 			document.getElementById("co_spin").checked = false;
 			Jmol.script(main, loadString);
+		}
+		
+		function getCurrentMolecule(){
+			moleculeSelect = document.getElementById("configuration");
+			return moleculeSelect.options[moleculeSelect.selectedIndex].molecule;
 		}
 		
 		function toggleSpin() {
