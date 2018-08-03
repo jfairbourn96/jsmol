@@ -40,20 +40,20 @@
 					<strong>State:</strong>
 					
 					<select name="state" id="h2o_state" onChange="loadNew(this.value);">
-						<option value="PDB/vsepr_01_BeCl2.mol" selected="selected">Linear</option>
-						<option value="PDB/vsepr_02_N2.mol">Linear (2)</option>
-						<option value="PDB/vsepr_03_BF3.mol">Trigonal Planar</option>
-						<option value="PDB/vsepr_04_O3.mol">Trigonal Planar - Bent</option>
-						<option value="PDB/vsepr_05_CH4.mol">Tetrahedral</option>
-						<option value="PDB/vsepr_06_H3O.mol">Tetrahedral - Trigonal Pyramidal</option>
-						<option value="PDB/vsepr_07_H2O.mol">Tetrahedral - Bent</option>
-						<option value="PDB/vsepr_08_PCl5.mol">Trigonal Bipyramidal</option>
-						<option value="PDB/vsepr_09_SF4.pdb">Trigonal Bipyramidal - Seesaw</option>
-						<option value="PDB/vsepr_10_ClF3.mol">Trigonal Bipyramidal - T-shaped</option>
-						<option value="PDB/vsepr_11_XeF2.mol">Trigonal Bipyramidal - Linear</option>
-						<option value="PDB/vsepr_12_SF6.mol">Octahedral</option>
-						<option value="PDB/vsepr_13_BrF5.mol">Octahedral - Square Pyramidal</option>
-						<option value="PDB/vsepr_14_ICl4.xyz">Octahedral - Square Planar</option>
+						<option id="vsepr01" value=vsepr_01 selected="selected">Linear</option>
+						<option id="vsepr02" value=vsepr_02>Linear (2)</option>
+						<option id="vsepr03" value=>Trigonal Planar</option>
+						<option id="vsepr04" value=>Trigonal Planar - Bent</option>
+						<option id="vsepr05" value=>Tetrahedral</option>
+						<option id="vsepr06" value=>Tetrahedral - Trigonal Pyramidal</option>
+						<option id="vsepr07" value=>Tetrahedral - Bent</option>
+						<option id="vsepr08" value=>Trigonal Bipyramidal</option>
+						<option id="vsepr09" value=>Trigonal Bipyramidal - Seesaw</option>
+						<option id="vsepr10" value=>Trigonal Bipyramidal - T-shaped</option>
+						<option id="vsepr11" value=>Trigonal Bipyramidal - Linear</option>
+						<option id="vsepr12" value=>Octahedral</option>
+						<option id="vsepr13" value=>Octahedral - Square Pyramidal</option>
+						<option id="vsepr14" value=>Octahedral - Square Planar</option>
 
 <!--					To add more options, simply fill in the following new option tag: -->
 <!--					<option value="{{path to pdb}}">{{Name}}</option>-->
@@ -109,12 +109,31 @@
 	</main>
 	
 	<script>
+		window.addEventListener("load", function(event){
+			document.getElementById("vsepr01").value = vsepr_01;
+			console.log(document.getElementById("vsepr01").value.path);	
+			document.getElementById("vsepr02").setAttribute("value", vsepr_02);
+			document.getElementById("vsepr03").value = vsepr_03;
+			document.getElementById("vsepr04").value = vsepr_04;
+			document.getElementById("vsepr05").value = vsepr_05;
+			document.getElementById("vsepr06").value = vsepr_06;
+			document.getElementById("vsepr07").value = vsepr_07;
+			document.getElementById("vsepr08").value = vsepr_08;
+			document.getElementById("vsepr09").value = vsepr_09;
+			document.getElementById("vsepr10").value = vsepr_10;
+			document.getElementById("vsepr11").value = vsepr_11;
+			document.getElementById("vsepr12").value = vsepr_12;
+			document.getElementById("vsepr13").value = vsepr_13;
+			document.getElementById("vsepr14").value = vsepr_14;
+			console.log("Finished loading and assigning variables to HTML Element values.");
+		});
 		// Functions so none of the html actually touches anything to do with JSmol directly.
 		
 		// Resets the inputs and loads the appropriate pdb file.
-		function loadNew(pdbFile) {
+		function loadNew(vsepr_object) {
 			// TODO: If Dr. Ensign provides separate descriptions that he would like associated with each of the different states, also change the state of a variable to be those descriptions, and then simply display said variable in the aside.
-			var loadString = "load " + pdbFile + "; select *; spacefill 0.4;";
+			console.log(vsepr_object.formula);
+			var loadString = "load " + vsepr_object.path + "; select *; spacefill 0.4;";
 			
 			document.getElementById("mt_ballstick").checked = true;
 			document.getElementById("co_spin").checked = false;
