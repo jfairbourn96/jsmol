@@ -85,6 +85,9 @@
 					
 					<input type="checkbox" name="co_spin" id="co_spin" onClick="toggleSpin();">
 					<label for="co_spin">Spin</label>
+					
+					<input type="checkbox" name="co_lonePair" id="co_lonePair" onClick="toggleLonePair();" disabled="true">
+					<label for="co_lonePair">Lone Pair(s)</label>
 				</div>
 			</div>
 		</section>
@@ -169,13 +172,21 @@
 		});
 		// Functions so none of the html actually touches anything to do with JSmol directly.
 		
-		// Resets the inputs and loads the appropriate pdb file by calling the current molecule's load path.
+		// Resets the inputs and loads the appropriate pdb file by calling the current molecule's load path. Hides the Lone Pair checkbox if the molecule has no unbonded electrons.
 		function loadNew() {
-			molecule = getCurrentMolecule();
+			var molecule = getCurrentMolecule();
 			var loadString = "load " + molecule.path + "; select *; spacefill 0.4;";
+			
+			if (molecule.nonbonded === 0) {
+				document.getElementById("co_lonePair").disabled = true;
+			} else {
+				document.getElementById("co_lonePair").disabled = false;
+			}
 			
 			document.getElementById("mt_ballstick").checked = true;
 			document.getElementById("co_spin").checked = false;
+			document.getElementById("co_lonePair").checked = false;
+			
 			Jmol.script(main, loadString);
 		}
 		
@@ -189,6 +200,14 @@
 				Jmol.script(main, 'spin on;');
 			} else {
 				Jmol.script(main, 'spin off;');
+			}
+		}
+		
+		function toggleLonePair() {
+			if (document.getElementById('co_lonePair').checked) {
+				Jmol.script(main, getCurrentMolecule().lone_pair_command);
+			} else {
+				Jmol.script(main, 'lcaoCartoon OFF');
 			}
 		}
 		

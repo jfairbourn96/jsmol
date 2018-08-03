@@ -5,7 +5,8 @@ var vsepr_01 = {
 	e_geometry: "linear", 
 	m_geometry: "linear", 
 	path: "PDB/vsepr_01_BeCl2.mol",
-	formula: "BeCl2"
+	formula: "BeCl2",
+	lone_pair_command: ""
 };
 
 var vsepr_02 = {
@@ -15,7 +16,8 @@ var vsepr_02 = {
 	e_geometry: "linear",
 	m_geometry: "linear",
 	path: "PDB/vsepr_02_N2.mol",
-	formula: "N2"
+	formula: "N2",
+	lone_pair_command: "select *; lcaoCartoon ON; lcaoCartoon SCALE 1.5 COLOR TRANSLUCENT [31,240,31] CREATE spb;"
 };
 
 var vsepr_03 = {
@@ -25,7 +27,8 @@ var vsepr_03 = {
 	e_geometry: "trigonal planar",
 	m_geometry: "trigonal planar",
 	path: "PDB/vsepr_03_BF3.mol",
-	formula: "BF3"
+	formula: "BF3",
+	lone_pair_command: "";
 };
 
 var vsepr_04 = {
@@ -35,7 +38,8 @@ var vsepr_04 = {
 	e_geometry: "trigonal planar",
 	m_geometry: "bent",
 	path: "PDB/vsepr_04_O3.mol",
-	formula: "O3"
+	formula: "O3",
+	lone_pair_command: ""
 };
 
 var vsepr_05 = {
