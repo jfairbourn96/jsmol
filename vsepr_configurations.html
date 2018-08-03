@@ -53,12 +53,6 @@
 
 					<input type="radio" name="bg_color" id="bg_grey" onclick="changeColor('grey');">
 					<label for="bg_grey">Grey</label>
-					
-<!--				
-					Follow this template to add more colors: 
-					<input type="radio" name="bg_color" id="{{NEW ID}}" onclick="changeColor('{{NEW COLOR}}');">
-					<label for="{{NEW ID}}">{{NEW LABEL}}</label>
--->
 				</div>
 
 				<div id="control_model_type" class="option">
@@ -72,12 +66,6 @@
 
 					<input type="radio" name="model_type" id="mt_stick" onclick="stick();">
 					<label for="mt_stick">Stick Only</label>
-					
-<!--
-					Follow this template to add more configurations:
-					<input type="radio" name="model_type" id="{{NEW ID}}" onclick="{{NEW FUNCTION}}">
-					<label for="{{NEW ID}}">{{NEW LABEL}}</label>
--->
 				</div>
 
 				<div id="control_other" class="option">
@@ -95,7 +83,7 @@
 	
 	<script>
 		window.addEventListener("load", function(event){
-			moleculeSelect = document.getElementById("configuration");
+			var moleculeSelect = document.getElementById("configuration");
 			
 			// each option has an associated molecule data attribute that links it to a certain JS Molecule vsepr object
 			
@@ -222,12 +210,6 @@
 		function stick() {
 			Jmol.script(main, 'wireframe 0.2; spacefill off;');
 		}
-		
-// 		Create more functions by following this template:
-//		
-//		function function_name() {
-//			Jmol.script(main, 'Jmol_command_string');
-//		}
 		
 		function changeColor(color) {
 			var colorString = 'background ' + color + ';';
