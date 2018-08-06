@@ -48,6 +48,7 @@ sup {
 	font-weight: bold;
 }
 #window {
+	/* Re-size this to match the dimensions of the info variable in jsmol html pages */
 	height: 500px;
 	width: 500px;
 }
@@ -90,6 +91,10 @@ sup {
 .option > button {
 	margin-left: 2px;
 	margin-right: 2px;
+}
+.option > * {
+	padding-left: 2px;
+	padding_right: 2px;
 }
 .option > strong {
 	text-align: right;

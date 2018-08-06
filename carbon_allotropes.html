@@ -5,14 +5,13 @@
 	<title>Carbon Allotropes</title>
 	<link href="molecule-page.css" rel="stylesheet" type="text/css">
 	<script src="jsmol/JSmol.min.js"></script>
-	<script src="molecules.js"></script>
+	<script src="carbon_molecules.js"></script>
 	<script>
 		var info = {
 			color: "#FFFFFF", 
 			height: 500,      
 			width: 500,
 			j2sPath: "jsmol/j2s",
-			// Change the initial molecule here.
 			script: "load PDB/graphite.pdb; spacefill 20%; wireframe 0.15; spin off; frank on; background=white; antialiasDisplay=true;",
 			debug: false
 		};
@@ -94,36 +93,40 @@
 		</section>
 	</main>
 	
+	
 	<script>
 		// Functions so none of the html actually touches anything to do with JSmol directly.
-		window.addEventListener("load", function(event){
+		// make sure the initWindow function is called once the page has loaded
+		window.addEventListener("load", initWindow);
+		
+		function initWindow() {
 			var moleculeSelect = document.getElementById('configuration');
 			
+			// initialize the 6 option elements
 			var option01 = document.createElement("option");
-			option01.molecule = buckyball;
-			option01.label = "Buckyball";
-			
 			var option02 = document.createElement("option");
-			option02.molecule = nanotube;
-			option02.label = "Nanotube";
-			option02.selected = "selected";
-			
 			var option03 = document.createElement("option");
-			option03.molecule = diamond;
-			option03.label = "Diamond";
-			
 			var option04 = document.createElement("option");
-			option04.molecule = graphite;
-			option04.label = "Graphite";
-			
-			var option05 = document.createElement("option");
-			option05.molecule = graphene_1;
-			option05.label = "Graphene";
-			
+			var option05 = document.createElement("option");			
 			var option06 = document.createElement("option");
+
+			// assign each element a molecule object from carbon_molecules.js
+			option01.molecule = buckyball;
+			option02.molecule = nanotube;
+			option03.molecule = diamond;
+			option04.molecule = graphite;
+			option05.molecule = graphene_1;
 			option06.molecule = graphene_2;
+			
+			// label each element
+			option01.label = "Buckyball";			
+			option02.label = "Nanotube";
+			option03.label = "Diamond";
+			option04.label = "Graphite";
+			option05.label = "Graphene";
 			option06.label = "Graphene (2)";
 			
+			// link each option to the select element
 			moleculeSelect.add(option01);
 			moleculeSelect.add(option02);
 			moleculeSelect.add(option03);
@@ -131,23 +134,16 @@
 			moleculeSelect.add(option05);
 			moleculeSelect.add(option06);
 			
+			// IMPORTANT: Make sure one of the options is selected, or the loadNew() function call will not work.
+			option05.selected = "selected";
+			
 			loadNew();
-			
-			console.log("loaded");
-		});
-
-		// Resets the inputs and loads the appropriate pdb file.
-		function loadNew() {
-			// TODO: If Dr. Ensign provides separate descriptions that he would like associated with each of the different states, also change the state of a variable to be those descriptions, and then simply display said variable in the aside.
-			var loadString = "load " + pdbFile + ";";
-			
-			document.getElementById("mt_ballstick").checked = true;
-			document.getElementById("co_spin").checked = false;
-			Jmol.script(main, loadString);
 		}
 		
+		// Loads the new molecule, sets the title and description appropriately, and sets options to default
 		function loadNew() {
 			var molecule = getCurrentMolecule();
+			
 			var loadString = "load " + molecule.path + "; select *; spacefill 0.4;";
 			
 			document.getElementById('name').innerHTML = "Carbon Allotrope: " + molecule.title;

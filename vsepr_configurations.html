@@ -5,7 +5,7 @@
 	<title>VSEPR Configurations</title>
 	<link href="molecule-page.css" rel="stylesheet" type="text/css">
 	<script src="jsmol/JSmol.min.js"></script>
-	<script src="molecules.js"></script>
+	<script src="vsepr_molecules.js"></script>
 	<script>
 		var info = {
 			color: "#FFFFFF", 
@@ -40,6 +40,11 @@
 					<strong>State:</strong>
 					
 					<select name="state" id="configuration" onChange="loadNew();"></select>
+				</div>
+				
+				<div id="info" class="option">
+					<strong>Molecule:</strong>
+					<div id="info_name"></div>
 				</div>
 
 				<div id="control_bg" class="option">
@@ -82,67 +87,61 @@
 	</main>
 	
 	<script>
-		window.addEventListener("load", function(event){
+		// sets the initWindow function to be called at page load
+		window.addEventListener("load", initWindow);
+			
+		function initWindow(){
 			var moleculeSelect = document.getElementById("configuration");
 			
-			// each option has an associated molecule data attribute that links it to a certain JS Molecule vsepr object
-			
+			// initialize all 14 options within the select
 			var option01 = document.createElement("option");
-			option01.molecule = vsepr_01;
-			option01.label = "Linear";
-			
 			var option02 = document.createElement("option");
-			option02.molecule = vsepr_02;
-			option02.label = "Linear (2)";
-			
 			var option03 = document.createElement("option");
-			option03.molecule = vsepr_03;
-			option03.label = "Trigonal Planar";
-			
 			var option04 = document.createElement("option");
-			option04.molecule = vsepr_04;
-			option04.label = "Trigonal Planar - Bent";
-			
 			var option05 = document.createElement("option");
-			option05.molecule = vsepr_05;
-			option05.label = "Tetrahedral";
-			
 			var option06 = document.createElement("option");
-			option06.molecule = vsepr_06;
-			option06.label = "Tetrahedral - Trigonal Pyramidal";
-			
 			var option07 = document.createElement("option");
-			option07.molecule = vsepr_07;
-			option07.label = "Tetrahedral - Bent";
-			
 			var option08 = document.createElement("option");
-			option08.molecule = vsepr_08;
-			option08.label = "Trigonal Bipyramidal";
-			
 			var option09 = document.createElement("option");
-			option09.molecule = vsepr_09;
-			option09.label = "Trigonal Bipyramidal - Seesaw";
-			
 			var option10 = document.createElement("option");
-			option10.molecule = vsepr_10;
-			option10.label = "Trigonal Bipyramidal - T-shaped";
-			
 			var option11 = document.createElement("option");
-			option11.molecule = vsepr_11;
-			option11.label = "Trigonal Bipyramidal - Linear";
-			
 			var option12 = document.createElement("option");
-			option12.molecule = vsepr_12;
-			option12.label = "Octahedral";
-			
 			var option13 = document.createElement("option");
-			option13.molecule = vsepr_13;
-			option13.label = "Octahedral - Square Pyramidal";
-			
 			var option14 = document.createElement("option");
+			
+			// assign each option a corresponding molecule
+			option01.molecule = vsepr_01;
+			option02.molecule = vsepr_02;
+			option03.molecule = vsepr_03;
+			option04.molecule = vsepr_04;
+			option05.molecule = vsepr_05;
+			option06.molecule = vsepr_06;
+			option07.molecule = vsepr_07;
+			option08.molecule = vsepr_08;
+			option09.molecule = vsepr_09;
+			option10.molecule = vsepr_10;
+			option11.molecule = vsepr_11;
+			option12.molecule = vsepr_12;
+			option13.molecule = vsepr_13;
 			option14.molecule = vsepr_14;
+			
+			// give each option an appropriate label
+			option01.label = "Linear";
+			option02.label = "Linear (2)";
+			option03.label = "Trigonal Planar";
+			option04.label = "Trigonal Planar - Bent";
+			option05.label = "Tetrahedral";
+			option06.label = "Tetrahedral - Trigonal Pyramidal";
+			option07.label = "Tetrahedral - Bent";
+			option08.label = "Trigonal Bipyramidal";
+			option09.label = "Trigonal Bipyramidal - Seesaw";
+			option10.label = "Trigonal Bipyramidal - T-shaped";
+			option11.label = "Trigonal Bipyramidal - Linear";
+			option12.label = "Octahedral";
+			option13.label = "Octahedral - Square Pyramidal";
 			option14.label = "Trigonal Planar";
 			
+			// link each option to the <select> element
 			moleculeSelect.add(option01);
 			moleculeSelect.add(option02);
 			moleculeSelect.add(option03);
@@ -157,20 +156,28 @@
 			moleculeSelect.add(option12);
 			moleculeSelect.add(option13);
 			moleculeSelect.add(option14);
+			
+			// IMPORTANT: Set an option as the default selected choice
+			option01.selected = "selected";
+			
+			loadNew();
 		});
 		// Functions so none of the html actually touches anything to do with JSmol directly.
 		
-		// Resets the inputs and loads the appropriate pdb file by calling the current molecule's load path. Hides the Lone Pair checkbox if the molecule has no unbonded electrons.
 		function loadNew() {
+			// load the appropriate molecule
 			var molecule = getCurrentMolecule();
 			var loadString = "load " + molecule.path + "; select *; spacefill 0.4;";
 			
+			// Hide the lone pair checkbox if there are no lone pairs
 			if (molecule.nonbonded === 0) {
 				document.getElementById("co_lonePair").disabled = true;
 			} else {
 				document.getElementById("co_lonePair").disabled = false;
 			}
 			
+			// Set defaults
+			document.getElementById("info_name").innerHTML = molecule.formula;
 			document.getElementById("mt_ballstick").checked = true;
 			document.getElementById("co_spin").checked = false;
 			document.getElementById("co_lonePair").checked = false;
