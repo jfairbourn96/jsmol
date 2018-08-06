@@ -5,6 +5,7 @@
 	<title>Carbon Allotropes</title>
 	<link href="molecule-page.css" rel="stylesheet" type="text/css">
 	<script src="jsmol/JSmol.min.js"></script>
+	<script src="molecules.js"></script>
 	<script>
 		var info = {
 			color: "#FFFFFF", 
@@ -20,12 +21,14 @@
 
 <body>
 	<header>
-		<div id="name" class="app">
-			Carbon Allotropes
-		</div>
+		<div id="name" class="app"></div>
 	</header>
 	
 	<main>
+		<aside id="description" class="notes app">
+			<p>This should disappear.</p>
+		</aside>
+		
 		<section class="molecule">
 
 			<div id="window" class="app">
@@ -33,22 +36,14 @@
 					Jmol.getApplet("main", info);
 				</script>
 			</div>
+			
+			
 
 			<div id="controls" class="app">
 				<div id="control_state" class="option">
 					<strong>State:</strong>
 					
-					<select name="state" id="h2o_state" onChange="loadNew(this.value);">
-						<option value="PDB/buckyball.pdb">Buckyball</option>
-						<option value="PDB/diamond.pdb">Diamond</option>
-						<option value="PDB/graphene.pdb">Graphene</option>
-						<option value="PDB/graphene-2.pdb">Graphene (2)</option>
-						<option value="PDB/graphite.pdb" selected="selected">Graphite</option>
-						<option value="PDB/nanotube.pdb">Nanotube</option>
-
-<!--					To add more options, simply fill in the following new option tag: -->
-<!--					<option value="{{path to pdb}}">{{Name}}</option>-->
-					</select>
+					<select name="state" id="configuration" onChange="loadNew(this.value);"></select>
 				</div>
 
 				<div id="control_bg" class="option">
@@ -101,15 +96,71 @@
 	
 	<script>
 		// Functions so none of the html actually touches anything to do with JSmol directly.
-		
+		window.addEventListener("load", function(event){
+			var moleculeSelect = document.getElementById('configuration');
+			
+			var option01 = document.createElement("option");
+			option01.molecule = buckyball;
+			option01.label = "Buckyball";
+			
+			var option02 = document.createElement("option");
+			option02.molecule = nanotube;
+			option02.label = "Nanotube";
+			option02.selected = "selected";
+			
+			var option03 = document.createElement("option");
+			option03.molecule = diamond;
+			option03.label = "Diamond";
+			
+			var option04 = document.createElement("option");
+			option04.molecule = graphite;
+			option04.label = "Graphite";
+			
+			var option05 = document.createElement("option");
+			option05.molecule = graphene_1;
+			option05.label = "Graphene";
+			
+			var option06 = document.createElement("option");
+			option06.molecule = graphene_2;
+			option06.label = "Graphene (2)";
+			
+			moleculeSelect.add(option01);
+			moleculeSelect.add(option02);
+			moleculeSelect.add(option03);
+			moleculeSelect.add(option04);
+			moleculeSelect.add(option05);
+			moleculeSelect.add(option06);
+			
+			loadNew();
+			
+			console.log("loaded");
+		});
+
 		// Resets the inputs and loads the appropriate pdb file.
-		function loadNew(pdbFile) {
+		function loadNew() {
 			// TODO: If Dr. Ensign provides separate descriptions that he would like associated with each of the different states, also change the state of a variable to be those descriptions, and then simply display said variable in the aside.
 			var loadString = "load " + pdbFile + ";";
 			
 			document.getElementById("mt_ballstick").checked = true;
 			document.getElementById("co_spin").checked = false;
 			Jmol.script(main, loadString);
+		}
+		
+		function loadNew() {
+			var molecule = getCurrentMolecule();
+			var loadString = "load " + molecule.path + "; select *; spacefill 0.4;";
+			
+			document.getElementById('name').innerHTML = "Carbon Allotrope: " + molecule.title;
+			document.getElementById('description').innerHTML = molecule.description;
+			document.getElementById("mt_ballstick").checked = true;
+			document.getElementById("co_spin").checked = false;
+			
+			Jmol.script(main, loadString);
+		}
+		
+		function getCurrentMolecule(){
+			moleculeSelect = document.getElementById("configuration");
+			return moleculeSelect.options[moleculeSelect.selectedIndex].molecule;
 		}
 		
 		function toggleSpin() {
