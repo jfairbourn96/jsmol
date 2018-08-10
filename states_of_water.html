@@ -97,6 +97,15 @@
 					
 					<input type="checkbox" name="co_spin" id="co_spin" onClick="toggleSpin();">
 					<label for="co_spin">Spin</label>
+					
+					<input type="checkbox" name="co_isosurface" id="co_isosurface" onClick="toggleIsosurface();">
+					<label for="co_isosurface">Isosurface</label>
+					
+					<input type="checkbox" name="co_partialCharge" id="co_partialCharge" onClick="togglePartialCharge();">
+					<label for="co_partialCharge">Partial Charge</label>
+					
+					<input type="checkbox" name="co_bondAngle" id="co_bondAngle" onClick="toggleBondAngle();">
+					<label for="co_bondAngle">Angle</label>
 				</div>
 			</div>
 		</section>
@@ -113,6 +122,32 @@
 			document.getElementById("mt_ballstick").checked = true;
 			document.getElementById("co_spin").checked = false;
 			Jmol.script(main, loadString);
+		}
+		
+		function toggleIsosurface() {
+			document.getElementById('co_partialCharge').checked = false;
+			if (document.getElementById('co_isosurface').checked) {
+				Jmol.script(main, 'isosurface vdw; isosurface translucent;');
+			} else {
+				Jmol.script(main, 'select *; isosurface off;');
+			}
+		}
+		
+		function togglePartialCharge() {
+			document.getElementById('co_isosurface').checked = false;
+			if (document.getElementById('co_partialCharge').checked) {
+				Jmol.script(main, 'isosurface off; if ({atomno < 10}.partialcharge == 0){calculate partialcharge}; isosurface vdw map mep; isosurface translucent;');
+			} else {
+				Jmol.script(main, 'isosurface off;');
+			}
+		}
+		
+		function toggleBondAngle() {
+			if (document.getElementById('co_bondAngle').checked) {
+				Jmol.script(main, 'measure ({1}) ({0}) ({2});');
+			} else {
+				Jmol.script(main, 'measure off');
+			}
 		}
 		
 		function toggleSpin() {
