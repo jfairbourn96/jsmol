@@ -1,6 +1,8 @@
 //================================================
 //= 6 molecules loaded in carbon_allotropes.html =
 //================================================
+// Authors: Justin Fairbourn and Scott Ensign
+// Created at Utah State University with support from the Chemistry department and the Center for Innovative Design and Instruction.
 
 var buckyball = {
 	title: "Buckyball",

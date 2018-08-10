@@ -1,10 +1,13 @@
 <!doctype html>
 <html>
 <head>
+<!--	Authors: Justin Fairbourn and Scott Ensign -->
+<!--	Created at Utah State University with support from the Chemistry department and the Center for Innovative Design and Instruction. -->
 	<meta charset="utf-8">
 	<title>Water States and Structure</title>
 	<link href="molecule-page.css" rel="stylesheet" type="text/css">
 	<script src="jsmol/JSmol.min.js"></script>
+	<script src="water_molecules.js"></script>
 	<script>
 		var info = {
 			color: "#FFFFFF", 
@@ -19,12 +22,6 @@
 </head>
 
 <body>
-<!--	TODO: Show isosurface, partial charges, bond angle for single water molecule. -->
-<!--	TODO: Disable the above options for other water configurations. -->
-<!--	TODO: Add Lorem Ipsum that displays dynamically for each water molecule file. -->
-<!--	TODO: Change the select to load from JS options from JSON in an external file. -->
-<!--	TODO: Comment with instructions for Dr. Ensign to follow. -->
-	
 	<header>
 		<div id="name" class="app">
 			States and Structure of H<sub>2</sub>O
@@ -32,6 +29,8 @@
 	</header>
 	
 	<main>
+		<aside id="description" class="notes app"></aside>
+		
 		<section class="molecule">
 
 			<div id="window" class="app">
@@ -44,14 +43,7 @@
 				<div id="control_state" class="option">
 					<strong>State:</strong>
 					
-					<select name="state" id="h2o_state" onChange="loadNew(this.value);">
-						<option value="PDB/h2o-ice.pdb">Solid: Ice</option>
-						<option value="PDB/h2o-ice-hex.pdb">Solid: Ice (Hex)</option>
-						<option value="PDB/h2o-liquid.pdb">Liquid: Water</option>
-						<option value="PDB/h2o.pdb" selected="selected">Gas: Single Molecule</option>
-<!--					To add more options, simply fill in the following new option tag: -->
-<!--					<option value="{{path to pdb}}">{{Name}}</option>-->
-					</select>
+					<select name="state" id="configuration" onChange="loadNew(this.value);"></select>
 				</div>
 
 				<div id="control_bg" class="option">
@@ -113,14 +105,69 @@
 	
 	<script>
 		// Functions so none of the html actually touches anything to do with JSmol directly.
+		window.addEventListener("load", initWindow);
+
+		function initWindow() {
+			var moleculeSelect = document.getElementById('configuration');
+			
+			// initialize the 6 option elements
+			var option01 = document.createElement("option");
+			var option02 = document.createElement("option");
+			var option03 = document.createElement("option");
+			var option04 = document.createElement("option");
+
+			// assign each element a molecule object from carbon_molecules.js
+			option01.molecule = h2o_single;
+			option02.molecule = h2o_liquid;
+			option03.molecule = h2o_ice;
+			option04.molecule = h2o_ice_hex;
+			
+			// label each element
+			option01.label = "Gas: Single Molecule";			
+			option02.label = "Liquid: Water";
+			option03.label = "Solid: Ice";
+			option04.label = "Solid: Ice-Hex";
+			
+			// link each option to the select element
+			moleculeSelect.add(option01);
+			moleculeSelect.add(option02);
+			moleculeSelect.add(option03);
+			moleculeSelect.add(option04);
+			
+			// IMPORTANT: Make sure one of the options is selected, or the loadNew() function call will not work.
+			option01.selected = "selected";
+			
+			loadNew();
+		}
+		
+		function getCurrentMolecule(){
+			moleculeSelect = document.getElementById("configuration");
+			return moleculeSelect.options[moleculeSelect.selectedIndex].molecule;
+		}
 		
 		// Resets the inputs and loads the appropriate pdb file.
 		function loadNew(pdbFile) {
-			// TODO: If Dr. Ensign provides separate descriptions that he would like associated with each of the different states, also change the state of a variable to be those descriptions, and then simply display said variable in the aside.
-			var loadString = "load " + pdbFile + ";";
+			var molecule = getCurrentMolecule();
 			
+			var loadString = "load " + molecule.path + ";";
+			
+			if (molecule === h2o_single) {
+				document.getElementById('co_bondAngle').disabled = false;
+				document.getElementById('co_isosurface').disabled = false;
+				document.getElementById('co_partialCharge').disabled = false;
+			} else {
+				document.getElementById('co_bondAngle').disabled = true;
+				document.getElementById('co_isosurface').disabled = true;
+				document.getElementById('co_partialCharge').disabled = true;
+			}
+			
+			document.getElementById('description').innerHTML = molecule.description;
+			document.getElementById('co_bondAngle').checked = false;
+			document.getElementById('co_isosurface').checked = false;
+			document.getElementById('co_partialCharge').checked = false;
 			document.getElementById("mt_ballstick").checked = true;
 			document.getElementById("co_spin").checked = false;
+			
 			Jmol.script(main, loadString);
 		}
 		
