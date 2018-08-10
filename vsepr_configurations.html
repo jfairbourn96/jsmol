@@ -20,6 +20,9 @@
 </head>
 
 <body>
+<!--	TODO: Consistent orientations for all of the vsepr_configurations. -->
+<!--	TODO: Make the central atoms purple and the peripheral atoms white. -->
+
 	<header>
 		<div id="name" class="app">
 			VSEPR Configurations
@@ -139,7 +142,7 @@
 			option11.label = "Trigonal Bipyramidal - Linear";
 			option12.label = "Octahedral";
 			option13.label = "Octahedral - Square Pyramidal";
-			option14.label = "Trigonal Planar";
+			option14.label = "Octahedral - Square Planar";
 			
 			// link each option to the <select> element
 			moleculeSelect.add(option01);
@@ -161,7 +164,7 @@
 			option01.selected = "selected";
 			
 			loadNew();
-		});
+		};
 		// Functions so none of the html actually touches anything to do with JSmol directly.
 		
 		function loadNew() {
@@ -202,7 +205,7 @@
 			if (document.getElementById('co_lonePair').checked) {
 				Jmol.script(main, getCurrentMolecule().lone_pair_command);
 			} else {
-				Jmol.script(main, 'lcaoCartoon OFF');
+				Jmol.script(main, 'lcaoCartoon OFF; isosurface OFF;');
 			}
 		}
 		
