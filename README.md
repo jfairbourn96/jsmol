@@ -20,7 +20,7 @@ $ git clone https://github.com/jfairbourn96/jsmol
 
 That's it! Make sure your browser and Java installation are up to date and start changing and configuring the HTML to fit your specific needs. Once cloned, opening `carbon_allotropes.html` should display a page looking like this:
 
-![Screenshot of carbon_allotropes.html properly loaded](./screenshots/readme_example.png)
+![Screenshot of carbon_allotropes.html properly loaded](jsmol/screenshots/readme_example.PNG)
 
 If things don't look right (i.e. the description panel is blank, the molecule pane displays an error message, or the dropdown menu is blank) ensure that jsmol and the associated .js and .css files are in the proper directory relative to the html.
 
