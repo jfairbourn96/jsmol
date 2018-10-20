@@ -13,7 +13,9 @@ var vsepr_01 = {
 	m_geometry: "linear", 
 	path: "PDB/vsepr_01_BeCl2.mol",
 	formula: "BeCl<sub>2</sub>",
-	lone_pair_command: ""
+	lone_pair_command: "",
+	center_atomno: 2,
+	color_string: "select *; color purple; select atomno=2; color white;"
 };
 
 var vsepr_02 = {
@@ -24,6 +26,7 @@ var vsepr_02 = {
 	m_geometry: "linear",
 	path: "PDB/vsepr_02_N2.mol",
 	formula: "N<sub>2</sub>",
+	center_atomno: 2,
 	lone_pair_command: "select *; lcaoCartoon ON; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE spb;"
 };
 
@@ -35,7 +38,8 @@ var vsepr_03 = {
 	m_geometry: "trigonal planar",
 	path: "PDB/vsepr_03_BF3.mol",
 	formula: "BF<sub>3</sub>",
-	lone_pair_command: ""
+	lone_pair_command: "",
+	center_atomno: 2,
 };
 
 var vsepr_04 = {
@@ -46,7 +50,8 @@ var vsepr_04 = {
 	m_geometry: "bent",
 	path: "PDB/vsepr_04_O3.mol",
 	formula: "O<sub>3</sub>",
-	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp2c;"
+	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp2c;",
+	center_atomno: 1,
 };
 
 var vsepr_05 = {
@@ -57,7 +62,8 @@ var vsepr_05 = {
 	m_geometry: "tetrahedral",
 	path: "PDB/vsepr_05_CH4.mol",
 	formula: "CH<sub>4</sub>",
-	lone_pair_command: ""
+	lone_pair_command: "",
+	center_atomno: 1,
 };
 
 var vsepr_06 = {
@@ -68,7 +74,8 @@ var vsepr_06 = {
 	m_geometry: "trigonal pyramidal",
 	path: "PDB/vsepr_06_H3O.mol",
 	formula: "H<sub>3</sub>O",
-	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 1.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d;"
+	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 1.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d;",
+	center_atomno: 1,
 };
 
 var vsepr_07 = {
@@ -79,8 +86,8 @@ var vsepr_07 = {
 	m_geometry: "bent",
 	path: "PDB/vsepr_07_H2O.mol",
 	formula: "H<sub>2</sub>O",
-	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 1.3 COLOR TRANSLUCENT [31,240,31] CREATE sp3c; lcaoCartoon CREATE sp3d;"
-	
+	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 1.3 COLOR TRANSLUCENT [31,240,31] CREATE sp3c; lcaoCartoon CREATE sp3d;",
+	center_atomno: 1,
 };
 
 var vsepr_08 = {
@@ -91,7 +98,8 @@ var vsepr_08 = {
 	m_geometry: "trigonal bipyramidal",
 	path: "PDB/vsepr_08_PCl5.mol",
 	formula: "PCl<sub>5</sub>",
-	lone_pair_command: ""
+	lone_pair_command: "",
+	center_atomno: 2,
 };
 
 var vsepr_09 = {
@@ -102,7 +110,8 @@ var vsepr_09 = {
 	m_geometry: "see saw",
 	path: "PDB/vsepr_09_SF4.pdb",
 	formula: "SF<sub>4</sub>",
-	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3de;"
+	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3de;",
+	center_atomno: 1,
 };
 
 var vsepr_10 = {
@@ -113,7 +122,8 @@ var vsepr_10 = {
 	m_geometry: "t-shaped",
 	path: "PDB/vsepr_10_ClF3.mol",
 	formula: "ClF<sub>3</sub>",
-	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp3de; lcaoCartoon CREATE sp3dd;"
+	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp3de; lcaoCartoon CREATE sp3dd;",
+	center_atomno: 1,
 };
 
 // TODO: Change this to the XeF2 xyz file or whatever it is.
@@ -123,9 +133,10 @@ var vsepr_11 = {
 	nonbonded: 3,
 	e_geometry: "trigonal bipyramidal",
 	m_geometry: "t-shaped",
-	path: "PDB/vsepr_11_XeF2.mol",
+	path: "PDB/vsepr_10_ClF3.mol; hide atomno=4",
 	formula: "XeF<sub>2</sub>",
-	lone_pair_command: ""
+	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp3de; lcaoCartoon CREATE sp3dd; lcaoCartoon CREATE sp3dc;",
+	center_atomno: 1,
 };
 
 var vsepr_12 = {
@@ -136,7 +147,8 @@ var vsepr_12 = {
 	m_geometry: "octahedral",
 	path: "PDB/vsepr_12_SF6.mol",
 	formula: "SF<sub>6</sub>",
-	lone_pair_command: ""
+	lone_pair_command: "",
+	center_atomno: 1,
 };
 
 var vsepr_13 = {
@@ -147,7 +159,8 @@ var vsepr_13 = {
 	m_geometry: "square pyramidal",
 	path: "PDB/vsepr_13_BrF5.mol",
 	formula: "BrF<sub>5</sub>",
-	lone_pair_command: "lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d2f;"
+	lone_pair_command: "lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d2f;",
+	center_atomno: 1,
 };
 
 var vsepr_14 = {
@@ -158,5 +171,6 @@ var vsepr_14 = {
 	m_geometry: "square planar",
 	path: "PDB/vsepr_14_ICl4.xyz",
 	formula: "ICl<sub>4</sub>",
-	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d2f; lcaoCartoon CREATE sp3d2e;"
+	lone_pair_command: "select atomno=1; lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d2f; lcaoCartoon CREATE sp3d2e;",
+	center_atomno: 1,
 };

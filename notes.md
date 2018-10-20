@@ -6,18 +6,17 @@ TODO:
  - Look into displaying JSmol over the page instead of a new page.
  - Look into the utility of the 'set picking' command 
 
-Ask Erik:
-  - Web Dev IDE
-    - Good coding functionality.
-    - Good preview.
-  - Best practices:
-    - JS:
-      - Creating functions/objects and referencing them in other html/js files.
-      - Where to put functions and objects.
-    - Commenting
-    - Attribution
-  - Security concerns with ion.chem.usu.edu.
-    - What can I do to fix it purely in the source files.
-  - Convenient RESTful API on my Pi.
-    - Access anywhere, not just on the same network or device.
-    - APIKey (what I know how to use in React-Native) or other forms of security.
+` $ cd chem`
+` $ http-server`
+open the port-website it lists
+
+
+
+## 10-12
+  - ~~Remove one of the ice displays in states of water.~~
+  - ~~VSEPR correct Trigonal Planar -> Square Planar~~
+  - ~~VSEPR show lone pairs on Trigonal Bipyramidal Linear~~
+  - Change the colors in the VSEPR.
+  - Add VSEPR placeholder for descriptions.
+  - Create page for ice display
+  - Play around with pymol lone pairs and electron density
