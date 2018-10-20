@@ -28,11 +28,11 @@
 		</div>
 	</header>
 	
-	<div id="instruction" class="app">
+	<!-- <div id="instruction" class="app">
 		<button>Previous</button>
 		<p>Water molecules in ice are arranged in an ordered crystalline lattice called "hexagonal ice".</p>
 		<button>Next</button>
-	</div>
+	</div> -->
 	
 	<main>
 		<aside id="description" class="notes app"></aside>
@@ -119,25 +119,21 @@
 			var option01 = document.createElement("option");
 			var option02 = document.createElement("option");
 			var option03 = document.createElement("option");
-			// var option04 = document.createElement("option");
 
 			// assign each element a molecule object from carbon_molecules.js
 			option01.molecule = h2o_single;
 			option02.molecule = h2o_liquid;
 			option03.molecule = h2o_ice;
-			// option04.molecule = h2o_ice_hex;
 			
 			// label each element
 			option01.label = "Gas: Single Molecule";			
 			option02.label = "Liquid: Water";
 			option03.label = "Solid: Ice";
-			// option04.label = "Solid: Ice-Hex";
 			
 			// link each option to the select element
 			moleculeSelect.add(option01);
 			moleculeSelect.add(option02);
 			moleculeSelect.add(option03);
-			// moleculeSelect.add(option04);
 			
 			// IMPORTANT: Make sure one of the options is selected, or the loadNew() function call will not work.
 			option01.selected = "selected";

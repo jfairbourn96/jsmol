@@ -16,7 +16,7 @@ open the port-website it lists
   - ~~Remove one of the ice displays in states of water.~~
   - ~~VSEPR correct Trigonal Planar -> Square Planar~~
   - ~~VSEPR show lone pairs on Trigonal Bipyramidal Linear~~
-  - Change the colors in the VSEPR.
-  - Add VSEPR placeholder for descriptions.
+  - ~~Change the colors in the VSEPR.~~
+  - ~~Add VSEPR placeholder for descriptions.~~
   - Create page for ice display
   - Play around with pymol lone pairs and electron density

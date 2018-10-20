@@ -88,13 +88,13 @@ function loadNew() {
   }
   
   // Set defaults
+  document.getElementById('description').innerHTML = molecule.description;
   document.getElementById("info_name").innerHTML = molecule.formula;
   document.getElementById("mt_ballstick").checked = true;
   document.getElementById("co_spin").checked = false;
   document.getElementById("co_lonePair").checked = false;
   
   Jmol.script(main, loadString+colorString);
-  // Jmol.script(main, colorString);
 
   if(molecule === vsepr) Jmol.script(main, "hide atomno=4;");
 }
