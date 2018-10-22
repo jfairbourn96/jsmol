@@ -1,5 +1,23 @@
+// Authors: Justin Fairbourn and Scott Ensign
+// Created at Utah State University with support from the Chemistry department and the Center for Innovative Design and Instruction.
+// This script defines the functions and everything else referenced in vsepr_configurations.html
+
+// info object passed to the Jmol in vsepr_configurations.html
+let info = {
+  color: "#FFFFFF", 
+  height: 500,      
+  width: 500,
+  j2sPath: "../jsmol/j2s",
+  // Change the initial molecule here.
+  script: "load ../PDB/vsepr_01_BeCl2.mol; spacefill 20%; wireframe 0.15; spin off; frank on; background=white; antialiasDisplay=true; set showMultipleBonds OFF;",
+  debug: false
+};
+
+// Adds initWindow() as the window load callback.
 window.addEventListener("load", initWindow);
-			
+
+// Function that initializes all of the options in the html and properly associates
+// each option with a molecule.
 function initWindow(){
   var moleculeSelect = document.getElementById("configuration");
   
@@ -72,8 +90,8 @@ function initWindow(){
   
   loadNew();
 };
-// Functions so none of the html actually touches anything to do with JSmol directly.
 
+// Resets defaults and loads the appropriate molecule.
 function loadNew() {
   // load the appropriate molecule
   let molecule = getCurrentMolecule();
@@ -96,7 +114,7 @@ function loadNew() {
   
   Jmol.script(main, loadString+colorString);
 
-  if(molecule === vsepr) Jmol.script(main, "hide atomno=4;");
+  if(molecule === vsepr_11) Jmol.script(main, "hide atomno=4;");
 }
 
 function getCurrentMolecule(){
