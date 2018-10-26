@@ -19,77 +19,91 @@ window.addEventListener("load", initWindow);
 // Function that initializes all of the options in the html and properly associates
 // each option with a molecule.
 function initWindow(){
-  var moleculeSelect = document.getElementById("configuration");
+  let moleculeSelect = document.getElementById("configuration");
   
   // initialize all 14 options within the select
-  var option01 = document.createElement("option");
-  var option02 = document.createElement("option");
-  var option03 = document.createElement("option");
-  var option04 = document.createElement("option");
-  var option05 = document.createElement("option");
-  var option06 = document.createElement("option");
-  var option07 = document.createElement("option");
-  var option08 = document.createElement("option");
-  var option09 = document.createElement("option");
-  var option10 = document.createElement("option");
-  var option11 = document.createElement("option");
-  var option12 = document.createElement("option");
-  var option13 = document.createElement("option");
-  var option14 = document.createElement("option");
-  
+  let options = {
+    option_01: document.createElement("option"),
+    option_02: document.createElement("option"),
+    option_03: document.createElement("option"),
+    option_04: document.createElement("option"),
+    option_05: document.createElement("option"),
+    option_06: document.createElement("option"),
+    option_07: document.createElement("option"),
+    option_08: document.createElement("option"),
+    option_09: document.createElement("option"),
+    option_10: document.createElement("option"),
+    option_11: document.createElement("option"),
+    option_12: document.createElement("option"),
+    option_13: document.createElement("option"),
+    option_14: document.createElement("option"),
+  }
+
   // assign each option a corresponding molecule
-  option01.molecule = vsepr_01;
-  option02.molecule = vsepr_02;
-  option03.molecule = vsepr_03;
-  option04.molecule = vsepr_04;
-  option05.molecule = vsepr_05;
-  option06.molecule = vsepr_06;
-  option07.molecule = vsepr_07;
-  option08.molecule = vsepr_08;
-  option09.molecule = vsepr_09;
-  option10.molecule = vsepr_10;
-  option11.molecule = vsepr_11;
-  option12.molecule = vsepr_12;
-  option13.molecule = vsepr_13;
-  option14.molecule = vsepr_14;
+  options.option_01.molecule = molecules.vsepr_01;
+  options.option_02.molecule = molecules.vsepr_02;
+  options.option_03.molecule = molecules.vsepr_03;
+  options.option_04.molecule = molecules.vsepr_04;
+  options.option_05.molecule = molecules.vsepr_05;
+  options.option_06.molecule = molecules.vsepr_06;
+  options.option_07.molecule = molecules.vsepr_07;
+  options.option_08.molecule = molecules.vsepr_08;
+  options.option_09.molecule = molecules.vsepr_09;
+  options.option_10.molecule = molecules.vsepr_10;
+  options.option_11.molecule = molecules.vsepr_11;
+  options.option_12.molecule = molecules.vsepr_12;
+  options.option_13.molecule = molecules.vsepr_13;
+  options.option_14.molecule = molecules.vsepr_14;
   
   // give each option an appropriate label
-  option01.label = "Linear";
-  option02.label = "Linear (2)";
-  option03.label = "Trigonal Planar";
-  option04.label = "Trigonal Planar - Bent";
-  option05.label = "Tetrahedral";
-  option06.label = "Tetrahedral - Trigonal Pyramidal";
-  option07.label = "Tetrahedral - Bent";
-  option08.label = "Trigonal Bipyramidal";
-  option09.label = "Trigonal Bipyramidal - Seesaw";
-  option10.label = "Trigonal Bipyramidal - T-shaped";
-  option11.label = "Trigonal Bipyramidal - Linear";
-  option12.label = "Octahedral";
-  option13.label = "Octahedral - Square Pyramidal";
-  option14.label = "Octahedral - Square Planar";
+  options.option_01.label = "Linear";
+  options.option_02.label = "Linear (2)";
+  options.option_03.label = "Trigonal Planar";
+  options.option_04.label = "Trigonal Planar - Bent";
+  options.option_05.label = "Tetrahedral";
+  options.option_06.label = "Tetrahedral - Trigonal Pyramidal";
+  options.option_07.label = "Tetrahedral - Bent";
+  options.option_08.label = "Trigonal Bipyramidal";
+  options.option_09.label = "Trigonal Bipyramidal - Seesaw";
+  options.option_10.label = "Trigonal Bipyramidal - T-shaped";
+  options.option_11.label = "Trigonal Bipyramidal - Linear";
+  options.option_12.label = "Octahedral";
+  options.option_13.label = "Octahedral - Square Pyramidal";
+  options.option_14.label = "Octahedral - Square Planar";
   
   // link each option to the <select> element
-  moleculeSelect.add(option01);
-  moleculeSelect.add(option02);
-  moleculeSelect.add(option03);
-  moleculeSelect.add(option04);
-  moleculeSelect.add(option05);
-  moleculeSelect.add(option06);
-  moleculeSelect.add(option07);
-  moleculeSelect.add(option08);
-  moleculeSelect.add(option09);
-  moleculeSelect.add(option10);
-  moleculeSelect.add(option11);
-  moleculeSelect.add(option12);
-  moleculeSelect.add(option13);
-  moleculeSelect.add(option14);
-  
+  moleculeSelect.add(options.option_01);
+  moleculeSelect.add(options.option_02);
+  moleculeSelect.add(options.option_03);
+  moleculeSelect.add(options.option_04);
+  moleculeSelect.add(options.option_05);
+  moleculeSelect.add(options.option_06);
+  moleculeSelect.add(options.option_07);
+  moleculeSelect.add(options.option_08);
+  moleculeSelect.add(options.option_09);
+  moleculeSelect.add(options.option_10);
+  moleculeSelect.add(options.option_11);
+  moleculeSelect.add(options.option_12);
+  moleculeSelect.add(options.option_13);
+  moleculeSelect.add(options.option_14);
+
   // IMPORTANT: Set an option as the default selected choice
-  option01.selected = "selected";
-  
+  let urlArg = getURLMol();
+
+  if (urlArg in options){
+    options[urlArg].selected = "selected";
+  } else {
+    options.option_01.selected = "selected";
+  }
+
   loadNew();
 };
+
+function getURLMol() {
+  return decodeURI(
+    (new RegExp('mol=' + '(.+?)(&|$)').exec(location.search) || [null])[1]
+  );
+}
 
 // Resets defaults and loads the appropriate molecule.
 function loadNew() {
@@ -114,7 +128,7 @@ function loadNew() {
   
   Jmol.script(main, loadString+colorString);
 
-  if(molecule === vsepr_11) Jmol.script(main, "hide atomno=4;");
+  if(molecule === molecules.vsepr_11) Jmol.script(main, "hide atomno=4;");
 }
 
 function getCurrentMolecule(){
