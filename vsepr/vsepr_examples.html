@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>VSEPR Configurations</title>
+	<link href="../styles/molecule-page.css" rel="stylesheet" type="text/css">
+	<script src="../jsmol/JSmol.min.js"></script>
+	<script src="example_molecules.js"></script>
+	<script src="example_functions.js"></script>
+</head>
+
+<body>
+	<header>
+		<div id="name" class="app"></div>
+	</header>
+
+	<main>
+		<aside id="description" class="notes app"></aside>
+		<section class="molecule">
+
+			<div id="window" class="app">
+				<script type="text/javascript">
+					Jmol.getApplet("main", info);
+				</script>
+			</div>
+
+			<div id="controls" class="app">
+				<div id="control_state" class="option">
+					<strong>State:</strong>
+					
+					<select name="state" id="configuration" onChange="loadNew();"></select>
+				</div>
+				
+				<div id="info" class="option">
+					<strong>Molecule:</strong>
+					<div id="info_name"></div>
+				</div>
+
+				<div id="control_bg" class="option">
+					<strong>Background Color:</strong>
+					
+					<input type="radio" name="bg_color" id="bg_white" onclick="changeColor('white');" checked="checked">
+					<label for="bg_white">White</label>
+
+					<input type="radio" name="bg_color" id="bg_black" onclick="changeColor('black');">
+					<label for="bg_black">Black</label>
+
+					<input type="radio" name="bg_color" id="bg_grey" onclick="changeColor('grey');">
+					<label for="bg_grey">Grey</label>
+				</div>
+
+				<div id="control_model_type" class="option">
+					<strong>Model Type:</strong>
+					
+					<input type="radio" name="model_type" id="mt_ballstick" onclick="ballAndStick();" checked="checked">
+					<label for="mt_ballstick">Ball and Stick</label>
+
+					<input type="radio" name="model_type" id="mt_spacefill" onclick="spacefill();">
+					<label for="mt_spacefill">Spacefill</label>
+
+					<input type="radio" name="model_type" id="mt_stick" onclick="stick();">
+					<label for="mt_stick">Stick Only</label>
+				</div>
+
+				<div id="control_other" class="option">
+					<strong>Show Other:</strong>
+					
+					<input type="checkbox" name="co_spin" id="co_spin" onClick="toggleSpin();">
+					<label for="co_spin">Spin</label>
+					
+					<input type="checkbox" name="co_lonePair" id="co_lonePair" onClick="toggleLonePair();" disabled="true">
+					<label for="co_lonePair">Lone Pair(s)</label>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
