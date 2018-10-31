@@ -13,10 +13,8 @@ open the port-website it lists
 
 
 ## 10-12
-  - ~~Remove one of the ice displays in states of water.~~
-  - ~~VSEPR correct Trigonal Planar -> Square Planar~~
-  - ~~VSEPR show lone pairs on Trigonal Bipyramidal Linear~~
-  - ~~Change the colors in the VSEPR.~~
-  - ~~Add VSEPR placeholder for descriptions.~~
+  - Ask Dr. Ensign about adding a command to highlight electron/molecular geometry in the vsepr_example.html
+  - Ask about XeF4 saying square bipyramidal, not square planar.
+  - Ask about specifics of the mini JSmols in the descriptions of CH4, PF5, SF6
   - Create page for ice display
   - Play around with pymol lone pairs and electron density

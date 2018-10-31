@@ -127,8 +127,10 @@ function loadNew() {
   }
   
   // Set defaults
-  document.getElementById('description').innerHTML = molecule.description;
-  document.getElementById("info_name").innerHTML = molecule.formula;
+  console.log(molecule.formula_html);
+  document.getElementById("name").innerHTML = molecule.formula_html;
+  document.getElementById('description').innerHTML = molecule.description_html;
+  document.getElementById("info_name").innerHTML = molecule.formula_html;
   document.getElementById("mt_ballstick").checked = true;
   document.getElementById("co_spin").checked = false;
   document.getElementById("co_lonePair").checked = false;
