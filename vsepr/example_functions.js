@@ -121,24 +121,52 @@ function loadNew() {
 
   // Hide the lone pair checkbox if there are no lone pairs
   if (molecule.nonbonded === 0) {
-    document.getElementById("co_lonePair").disabled = true;
+    document.getElementById("co_lone_pair").disabled = true;
   } else {
-    document.getElementById("co_lonePair").disabled = false;
+    document.getElementById("co_lone_pair").disabled = false;
   }
   
-  // Set defaults
-  console.log(molecule.formula_html);
+
+  // Change the title, formula, and notes displayed.
   document.getElementById("name").innerHTML = molecule.formula_html;
   document.getElementById('description').innerHTML = molecule.description_html;
   document.getElementById("info_name").innerHTML = molecule.formula_html;
+
+  // Unchecks every check box.
   document.getElementById("mt_ballstick").checked = true;
   document.getElementById("co_spin").checked = false;
-  document.getElementById("co_lonePair").checked = false;
+  document.getElementById("co_lone_pair").checked = false;
+  document.getElementById("co_isosurface").checked = false;
+  document.getElementById("co_partial_charge").checked = false;
+  document.getElementById("co_e_geometry").checked = false;
+  document.getElementById("co_m_geometry").checked = false;
+  document.getElementById("co_bond_angle").checked = false;
+  document.getElementById("co_aca_bond_angle").checked = false;
+  document.getElementById("co_ace_bond_angle").checked = false;
+  document.getElementById("co_ece_bond_angle").checked = false;
+  document.getElementById("co_ecen_bond_angle").checked = false;
+  document.getElementById("co_ecef_bond_angle").checked = false;
+
+  // Hide unusable commands.
+  molecule.commands.LP ? getBox("co_lone_pair").hidden = false : getBox("co_lone_pair").hidden = true; 
+  molecule.commands.IS ? getBox("co_isosurface").hidden = false : getBox("co_isosurface").hidden = true; 
+  molecule.commands.PC ? getBox("co_partial_charge").hidden = false : getBox("co_partial_charge").hidden = true; 
+  molecule.commands.BA ? getBox("co_bond_angle").hidden = false : getBox("co_bond_angle").hidden = true; 
+  molecule.commands.ACA ? getBox("co_aca_bond_angle").hidden = false : getBox("co_aca_bond_angle").hidden = true; 
+  molecule.commands.ACE ? getBox("co_ace_bond_angle").hidden = false : getBox("co_ace_bond_angle").hidden = true; 
+  molecule.commands.ECE ? getBox("co_ece_bond_angle").hidden = false : getBox("co_ece_bond_angle").hidden = true; 
+  molecule.commands.ECEN ? getBox("co_ecen_bond_angle").hidden = false : getBox("co_ecen_bond_angle").hidden = true; 
+  molecule.commands.ECEF ? getBox("co_ecef_bond_angle").hidden = false : getBox("co_ecef_bond_angle").hidden = true; 
+  
   
   Jmol.script(main, loadString);
   // Jmol.script(main, loadString+colorString);
 
   if(molecule === molecules.XeF2) Jmol.script(main, "hide atomno=4;");
+}
+
+function getBox(id) {
+  return document.getElementById(id);
 }
 
 function getCurrentMolecule(){
@@ -155,7 +183,7 @@ function toggleSpin() {
 }
 
 function toggleLonePair() {
-  if (document.getElementById('co_lonePair').checked) {
+  if (document.getElementById('co_lone_pair').checked) {
     Jmol.script(main, getCurrentMolecule().lone_pair_command);
   } else {
     Jmol.script(main, 'lcaoCartoon OFF; isosurface OFF;');
@@ -178,3 +206,46 @@ function changeColor(color) {
   var colorString = 'background ' + color + ';';
   Jmol.script(main, colorString);
 }
+
+function toggleEGeometry() {
+  console.log("NOTHIIIIIIING");
+}
+
+function toggleMGeometry() {
+  console.log("MORE NOTHIIIIIIING");
+}
+
+function toggleIsosurface() {
+  console.log("Isosurface");
+}
+
+function togglePartialCharges() {
+  console.log("Partial Charges");
+}
+
+function toggleBondAngle() {
+  console.log("Bond Angle");
+}
+
+function toggleACABondAngle() {
+  console.log("ACA Bond Angle");
+}
+
+function toggleACEBondAngle() {
+  console.log("ACE Bond Angle");
+}
+
+function toggleECEBondAngle() {
+  console.log("ECE Bond Angle");
+}
+
+function toggleECENBondAngle() {
+  console.log("ECEN Bond Angle");
+}
+function toggleECEFBondAngle() {
+  console.log("ECEF Bond Angle");
+}
+
+
+
+

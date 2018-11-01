@@ -34,7 +34,7 @@ Command Legend (+ denotes always displayed):
   + MG:   Molecular Geometry
     ACA:  Bond angle around Axial-Central-Axial atoms
     ACE:  Bond angle around Axial-Central-Equatorial atoms
-    ECA:  Bond angle around Equatorial-Central-Equatorial atoms
+    ECE:  Bond angle around Equatorial-Central-Equatorial atoms
     ECEN: ECE angle around nearest atoms
     ECEF: ECE angle around furthest atoms
 */
@@ -54,9 +54,7 @@ let molecules = {
     <p>There are two bonded domains on Be and no lone pairs, giving linear electron-domain and molecular geometries.</p>
     <img src="../jpegs/BeH2 chemdraw.gif" width="98" height="20" alt=""/>
     `,
-    commands: {
-
-    },
+    commands: {},
   },
   CO2: {
     e_domains: 2,
@@ -72,7 +70,9 @@ let molecules = {
     <p>Note that there are two lone pairs on each terminal O, although they are not shown in this jmol rendering. The electron-domain geometries of the terminal oxygens are trigonal planar, and the orbital hybridization on each O is thus sp2.</p>
     <img src="../jpegs/CO2.gif" alt="CO2 structure" width="180" height="85">
     `,
-    lone_pair_command: ""
+    commands: {
+      PC: true
+    }
   },
   N2: {
     e_domains: 2,
@@ -90,7 +90,7 @@ let molecules = {
     <p>The triple bond is formed from one sigma and two pi bonds. The pi bonds are formed from overlap of nonhybridized p orbitals that are oriented perpendicular to each other (e.g. <font color="#00FF00">p<sub>y</sub> </font>and <font color="#0000FF">p<sub>z</sub></font>, shown in <font color="#00FF00">green</font> and<font color="#0000FF"> blue</font>) </p> 
     <img src="../jpegs/N2 p orbitals chemdraw.gif" width="135" height="101" alt=""/>     
     `,
-    lone_pair_command: ""
+    commands: {}
   },
   BH3: {
     e_domains: 3,
@@ -105,7 +105,7 @@ let molecules = {
     <p>There are three bonded domains on B and no lone pairs, giving trigonal planar electron-domain and molecular geometries.</p>
 	  <img src="../jpegs/BH3 chemdraw with angles.gif" width="119" height="89" alt=""/>
     `,
-    lone_pair_command: ""
+    commands: {}
   },
   SO2: {
     e_domains: 3,
@@ -120,7 +120,10 @@ let molecules = {
     <p>SO<sub>2</sub> contains 2 bonded and one nonbonded electron domains, giving a trigonal planar e- domain geometry and a bent molecular geometry (AX<sub>2</sub>E). The bond angle is smaller (119 rather than 120 degrees) than  in a perfect trigonal plane due to lone pairs spreading out more in space than bonded pairs. A cartoon model of the electron density of the lone pair of electrons, represented by a translucent green spheroid, can be toggled on and off. Note that the shape of the spheroid does not represent the actual electron density of the lone pair, but allows you to visualize how the presence of that lone pair dictates the molecular geometry.</p>
 	  <img src="../jpegs/SO2 chemdraw.gif" width="78" height="88" alt=""/> 
     `,
-    lone_pair_command: ""
+    commands: {
+      LP: true,
+      IS: true
+    }
   },
   CH4: {
     e_domains: 4,
@@ -137,7 +140,10 @@ let molecules = {
 	  <p>Shown below is a tetrahedron, the geometric shape for which the term "tetrahedral geometry" was derived. A tetrahedron has four triangular faces formed by connecting lines between the four unique sets of three vertex corners. A molecule with four electron domains on a central atom can be superimposed on a tetrahedron, with the central atom (C) occupying the center of the tetrahedron, and the electron pairs pointing towards the four vertex corners.  </p>
 		<p>(put tetrahedron JSmol here)</p>
     `,
-    lone_pair_command: ""
+    commands: {
+      BA: true,
+      IS: true,
+    }
   },
   NH3: {
     e_domains: 4,
@@ -152,7 +158,12 @@ let molecules = {
     <p>NH<sub>3</sub> contains 3 bonded and one nonbonded electron domains, giving a tetrahedral e<sup>-</sup> domain geometry and a trigonal pyramidal molecular geometry. (AX<sub>3</sub>E). The H-N-H bond angles (107 degrees) are less than in a perfect tetrahedron because the lone pair electrons spread out more in space than bonded electron pairs, compressing the bond angle. A cartoon model of the electron density of the lone pair of electrons, represented by a translucent green spheroid, can be toggled on and off. Note that the shape of the spheroid does not represent the actual electron density of the lone pair, but allows you to visualize how the presence of that lone pair dictates the molecular geometry.</p>
 	  <img src="../jpegs/NH3 with angles.gif" width="176" height="240" alt=""/>
     `,
-    lone_pair_command: ""
+    commands: {
+      LP: true,
+      IS: true,
+      PC: true,
+      BA: true,
+    }
   },
   H2O: {
     e_domains: 4,
@@ -167,7 +178,12 @@ let molecules = {
     <p>H<sub>2</sub>O contains 2 bonded and two nonbonded electron domains, giving a tetrahedral e<sup>-</sup> domain geometry and a bentmolecular geometry. (AX<sub>2</sub>E<sub>2</sub>). The H-O-H bond angle (104 degrees) is less than in a perfect tetrahedron because the lone pair electrons spread out more in space than bonded electron pairs, compressing the bond angle. A cartoon model of the electron density of the lone pairs of electrons, represented by translucent purple spheroids, can be toggled on and off. Note that the shape of the spheroid does not represent the actual electron density of the lone pair, but allows you to visualize how the presence of the lone pairs dictates the molecular geometry. </p>
 		<img src="../jpegs/H2O.gif" width="94" height="91" alt=""/>
     `,
-    lone_pair_command: ""
+    commands: {
+      LP: true,
+      IS: true,
+      PC: true,
+      BA: true
+    }
   },
   PF5: {
     e_domains: 5,
@@ -184,7 +200,11 @@ let molecules = {
 		<p>Shown below is a trigonal bipyramid, the geometric shape for which the term "trigonal bipyramidal geometry" was derived. There are three &quot;equatorial&quot; electron domains which lie in the same  plane as the central P atom, forming a trigonal planar structure. The two remaining electron domains are at 90 degree angles to the trigonal plane. By themselves, the two axial electron domains and the central atom form a linear structure, with the two axial electron domains separated by a 180 degree angle.</p>
 		<p>(put trigonal bipyramid JSmol here)</p>
     `,
-    lone_pair_command: ""
+    commands: {
+      IS: true,
+      ACE: true,
+      ECE: true
+    }
   },
   SF4: {
     e_domains: 5,
@@ -200,7 +220,13 @@ let molecules = {
 		<p>A cartoon model of the electron density of the lone pair of electrons, represented by a translucent green spheroid, can be toggled on and off. Note that the shape of the spheroid does not represent the actual electron density of the lone pair, but allows you to visualize how the presence of that lone pair dictates the molecular geometry.</p>
 	  <img src="../jpegs/sf4 chemdraw.gif" width="94" height="99" alt=""/>
     `,
-    lone_pair_command: ""
+    commands: {
+      LP: true,
+      IS: true,
+      ACE: true,
+      ACA: true,
+      ECE: true
+    }
   },
   ClF3: {
     e_domains: 5,
@@ -216,7 +242,12 @@ let molecules = {
 		<p>A cartoon model of the electron density of the lone pairs of electrons, represented by translucent green spheroids, can be toggled on and off. Note that the shape of the spheroids does not represent the actual electron density of the lone pair, but allows you to visualize how the presence of that lone pair dictates the molecular geometry. Turn the &quot;isosurface&quot; on to see the actual electron density for this molecule.</p>
 	  <img src="../jpegs/ClF3 chemdraw.gif" width="94" height="100" alt=""/>
     `,
-    lone_pair_command: ""
+    commands: {
+      LP: true,
+      IS: true,
+      ACE: true,
+      ACA: true
+    }
   },
   XeF2: {    
     e_domains: 5,
@@ -232,7 +263,11 @@ let molecules = {
 		<p>A cartoon model of the electron density of the lone pairs of electrons, represented by translucent green spheroids, can be toggled on and off. Note that the shape of the spheroids does not represent the actual electron density of the lone pair, but allows you to visualize how the presence of the lone pairs dictates the molecular geometry. Turn the &quot;isosurface&quot; on to see the actual electron density for this molecule.</p>
 	  <img src="../jpegs/XeF2 chemdraw.gif" width="94" height="100" alt=""/>
     `,
-    lone_pair_command: ""
+    commands: {
+      LP: true,
+      IS: true,
+      ACA: true
+    }
   },
   SF6: {
     e_domains: 6,
@@ -249,7 +284,10 @@ let molecules = {
 		<p>Shown below is an <strong>octahedron</strong>, the geometric shape for which the term "octahedral geometry" was derived. The central atom lies at the center of the molecule. Four atoms lie in a common &quot;square plane&quot;, forming 90 degree bond angles with the central atom. Two atoms are at 90 degree angles to the atoms lying in the square plane. With the &quot;spin&quot; on, note how the molecule rotates about an axis where four terminal atoms are in an equatorial positions, while the two additional atoms are at axial positions. However, there are no &quot;true&quot; equatorial and axial positions since the molecule is completely symmetrical. Turn the &quot;spin&quot; off and rotate the molecule into the plane of the screen to see how atoms you perceive as equatorial and axial swap positions. Then turn the spin on again to see the molecule rotate about the new &quot;equator&quot;. Note how all the bond angles between nearest atoms are 90 degrees. Contrast this with a molcule with trigonal bipyramidal geometry, where the axial and equatorial positions are fixed, and two distinct bond angles are present between nearest atoms (120 and 90 degrees).
     <h2>put octahedron jsmol here</h2>
     `,
-    lone_pair_command: ""
+    commands: {
+      IS: true,
+      BA: true
+    }
   },
   IF5: {
     e_domains: 6,
@@ -265,7 +303,12 @@ let molecules = {
 		<p>A cartoon model of the electron density of the lone pair of electrons, represented by a translucent green spheroid, can be toggled on and off. Note that the shape of the spheroid does not represent the actual electron density of the lone pair, but allows you to visualize how the presence of that lone pair dictates the molecular geometry.			  </p>
 		<img src="../jpegs/IF5 chemdraw.gif" width="95" height="100" alt=""/>
     `,
-    lone_pair_command: ""
+    commands: {
+      LP: true,
+      ECEN: true,
+      ECEF: true,
+      ACE: true,
+    }
   },
   XeF4: {
     e_domains: 6,
@@ -281,6 +324,11 @@ let molecules = {
 		<p>A cartoon model of the electron density of the lone pairs of electrons, represented by translucent green spheroids, can be toggled on and off. Note that the shape of the spheroid does not represent the actual electron density of the lone pair, but allows you to visualize how the presence of the lone pairs dictates the molecular geometry.			  </p>
 		<p>Click &quot;show isosurface&quot; to see the actual electron density for the molecule.</p>  
     `,
-    lone_pair_command: ""
+    commands: {
+      LP: true,
+      IS: true,
+      ECEF: true,
+      ECEN: true
+    }
   },
 }

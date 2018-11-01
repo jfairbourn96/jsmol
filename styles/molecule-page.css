@@ -101,10 +101,13 @@ sup {
 }
 .option > * {
 	padding-left: 2px;
-	padding_right: 2px;
+	padding-right: 2px;
 }
 .option > strong {
 	text-align: right;
 	width: 150px;
-
+}
+#control_other > div {
+	display: flex;
+	flex-direction: column;
 }

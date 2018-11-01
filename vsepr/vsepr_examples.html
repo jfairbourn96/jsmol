@@ -65,11 +65,67 @@
 				<div id="control_other" class="option">
 					<strong>Show Other:</strong>
 					
-					<input type="checkbox" name="co_spin" id="co_spin" onClick="toggleSpin();">
-					<label for="co_spin">Spin</label>
-					
-					<input type="checkbox" name="co_lonePair" id="co_lonePair" onClick="toggleLonePair();" disabled="true">
-					<label for="co_lonePair">Lone Pair(s)</label>
+					<div>
+						<span id="co_spin">
+							<input type="checkbox" id="spin" onClick="toggleSpin();">
+							<label for="spin">Spin</label>
+						</span>
+
+						<span id="co_lone_pair">
+							<input type="checkbox" id="lone_pair" onClick="toggleLonePair();">
+							<label for="lone_pair">Lone Pair(s)</label>
+						</span>
+
+						<span id="co_isosurface">
+							<input type="checkbox" id="isosurface" onClick="toggleIsosurface();">
+							<label for="isosurface">Isosurface</label>
+						</span>
+
+						<span id="co_partial_charge">
+							<input type="checkbox" id="partial_charge" onClick="togglePartialCharges();">
+							<label for="partial_charge">Partial Charge</label>
+						</span>
+
+						<span id="co_e_geometry">
+							<input type="checkbox" id="e_geometry" onClick="toggleEGeometry();">
+							<label for="e_geometry">Electron Geometry</label>
+						</span>
+
+						<span id="co_m_geometry">
+							<input type="checkbox" id="m_geometry" onClick="toggleMGeometry();">
+							<label for="m_geometry">Molecular Geometry</label>
+						</span>
+
+						<span id="co_bond_angle">
+							<input type="checkbox" id="bond_angle" onClick="toggleBondAngle();">
+							<label for="bond_angle">Bond Angle</label>
+						</span>
+
+						<span id="co_aca_bond_angle">
+							<input type="checkbox" id="aca_bond_angle" onClick="toggleACABondAngle();">
+							<label for="aca_bond_angle">ACA</label>
+						</span>
+
+						<span id="co_ace_bond_angle">
+							<input type="checkbox" id="ace_bond_angle" onClick="toggleACEBondAngle();">
+							<label for="ace_bond_angle">ACE</label>
+						</span>
+
+						<span id="co_ece_bond_angle">
+							<input type="checkbox" id="ece_bond_angle" onClick="toggleECEBondAngle();">
+							<label for="ece_bond_angle">ECE</label>
+						</span>
+
+						<span id="co_ecen_bond_angle">
+							<input type="checkbox" id="ecen_bond_angle" onClick="toggleECENBondAngle();">
+							<label for="ecen_bond_angle">ECEN</label>
+						</span>
+
+						<span id="co_ecef_bond_angle">
+							<input type="checkbox" id="ecef_bond_angle" onClick="toggleECEFBondAngle();">
+							<label for="ecef_bond_angle">ECEF</label>
+						</span>
+					</div>
 				</div>
 			</div>
 		</section>
