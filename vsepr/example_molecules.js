@@ -121,7 +121,7 @@ let molecules = {
 	  <img src="../jpegs/SO2 chemdraw.gif" width="78" height="88" alt=""/> 
     `,
     commands: {
-      LP: true,
+      LP: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp2c;",
       IS: true
     }
   },
@@ -159,7 +159,7 @@ let molecules = {
 	  <img src="../jpegs/NH3 with angles.gif" width="176" height="240" alt=""/>
     `,
     commands: {
-      LP: true,
+      LP: "select atomno=1; lcaoCartoon SCALE 1.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d;",
       IS: true,
       PC: true,
       BA: true,
@@ -179,7 +179,7 @@ let molecules = {
 		<img src="../jpegs/H2O.gif" width="94" height="91" alt=""/>
     `,
     commands: {
-      LP: true,
+      LP: "select atomno=1; lcaoCartoon SCALE 1.3 COLOR TRANSLUCENT [31,240,31] CREATE sp3c; lcaoCartoon CREATE sp3d;",
       IS: true,
       PC: true,
       BA: true
@@ -221,7 +221,7 @@ let molecules = {
 	  <img src="../jpegs/sf4 chemdraw.gif" width="94" height="99" alt=""/>
     `,
     commands: {
-      LP: true,
+      LP: "select atomno=1; lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3de;",
       IS: true,
       ACE: true,
       ACA: true,
@@ -243,7 +243,7 @@ let molecules = {
 	  <img src="../jpegs/ClF3 chemdraw.gif" width="94" height="100" alt=""/>
     `,
     commands: {
-      LP: true,
+      LP: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp3de; lcaoCartoon CREATE sp3dd;",
       IS: true,
       ACE: true,
       ACA: true
@@ -264,7 +264,7 @@ let molecules = {
 	  <img src="../jpegs/XeF2 chemdraw.gif" width="94" height="100" alt=""/>
     `,
     commands: {
-      LP: true,
+      LP: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp3de; lcaoCartoon CREATE sp3dd; lcaoCartoon CREATE sp3dc;",
       IS: true,
       ACA: true
     }
@@ -304,7 +304,7 @@ let molecules = {
 		<img src="../jpegs/IF5 chemdraw.gif" width="95" height="100" alt=""/>
     `,
     commands: {
-      LP: true,
+      LP: "lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d2f;",
       ECEN: true,
       ECEF: true,
       ACE: true,
@@ -325,7 +325,7 @@ let molecules = {
 		<p>Click &quot;show isosurface&quot; to see the actual electron density for the molecule.</p>  
     `,
     commands: {
-      LP: true,
+      LP: "select atomno=1; lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d2f; lcaoCartoon CREATE sp3d2e;",
       IS: true,
       ECEF: true,
       ECEN: true

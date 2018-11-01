@@ -134,18 +134,18 @@ function loadNew() {
 
   // Unchecks every check box.
   document.getElementById("mt_ballstick").checked = true;
-  document.getElementById("co_spin").checked = false;
-  document.getElementById("co_lone_pair").checked = false;
-  document.getElementById("co_isosurface").checked = false;
-  document.getElementById("co_partial_charge").checked = false;
-  document.getElementById("co_e_geometry").checked = false;
-  document.getElementById("co_m_geometry").checked = false;
-  document.getElementById("co_bond_angle").checked = false;
-  document.getElementById("co_aca_bond_angle").checked = false;
-  document.getElementById("co_ace_bond_angle").checked = false;
-  document.getElementById("co_ece_bond_angle").checked = false;
-  document.getElementById("co_ecen_bond_angle").checked = false;
-  document.getElementById("co_ecef_bond_angle").checked = false;
+  document.getElementById("spin").checked = false;
+  document.getElementById("lone_pair").checked = false;
+  document.getElementById("isosurface").checked = false;
+  document.getElementById("partial_charge").checked = false;
+  document.getElementById("e_geometry").checked = false;
+  document.getElementById("m_geometry").checked = false;
+  document.getElementById("bond_angle").checked = false;
+  document.getElementById("aca_bond_angle").checked = false;
+  document.getElementById("ace_bond_angle").checked = false;
+  document.getElementById("ece_bond_angle").checked = false;
+  document.getElementById("ecen_bond_angle").checked = false;
+  document.getElementById("ecef_bond_angle").checked = false;
 
   // Hide unusable commands.
   molecule.commands.LP ? getBox("co_lone_pair").hidden = false : getBox("co_lone_pair").hidden = true; 
@@ -158,9 +158,7 @@ function loadNew() {
   molecule.commands.ECEN ? getBox("co_ecen_bond_angle").hidden = false : getBox("co_ecen_bond_angle").hidden = true; 
   molecule.commands.ECEF ? getBox("co_ecef_bond_angle").hidden = false : getBox("co_ecef_bond_angle").hidden = true; 
   
-  
   Jmol.script(main, loadString);
-  // Jmol.script(main, loadString+colorString);
 
   if(molecule === molecules.XeF2) Jmol.script(main, "hide atomno=4;");
 }
@@ -175,7 +173,7 @@ function getCurrentMolecule(){
 }
 
 function toggleSpin() {
-  if (document.getElementById('co_spin').checked) {
+  if (getBox('spin').checked) {
     Jmol.script(main, 'spin on;');
   } else {
     Jmol.script(main, 'spin off;');
@@ -183,8 +181,8 @@ function toggleSpin() {
 }
 
 function toggleLonePair() {
-  if (document.getElementById('co_lone_pair').checked) {
-    Jmol.script(main, getCurrentMolecule().lone_pair_command);
+  if (getBox('lone_pair').checked) {
+    Jmol.script(main, getCurrentMolecule().commands.LP);
   } else {
     Jmol.script(main, 'lcaoCartoon OFF; isosurface OFF;');
   }
