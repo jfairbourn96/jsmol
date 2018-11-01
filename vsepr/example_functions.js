@@ -133,19 +133,9 @@ function loadNew() {
   document.getElementById("info_name").innerHTML = molecule.formula_html;
 
   // Unchecks every check box.
-  document.getElementById("mt_ballstick").checked = true;
-  document.getElementById("spin").checked = false;
-  document.getElementById("lone_pair").checked = false;
-  document.getElementById("isosurface").checked = false;
-  document.getElementById("partial_charge").checked = false;
-  document.getElementById("e_geometry").checked = false;
-  document.getElementById("m_geometry").checked = false;
-  document.getElementById("bond_angle").checked = false;
-  document.getElementById("aca_bond_angle").checked = false;
-  document.getElementById("ace_bond_angle").checked = false;
-  document.getElementById("ece_bond_angle").checked = false;
-  document.getElementById("ecen_bond_angle").checked = false;
-  document.getElementById("ecef_bond_angle").checked = false;
+  getBox("mt_ballstick").checked = true;
+  getBox("spin").checked = false;
+  massUncheck();
 
   // Hide unusable commands.
   molecule.commands.LP ? getBox("co_lone_pair").hidden = false : getBox("co_lone_pair").hidden = true; 
@@ -167,6 +157,20 @@ function getBox(id) {
   return document.getElementById(id);
 }
 
+function massUncheck() {
+  getBox("lone_pair").checked = false;
+  getBox("isosurface").checked = false;
+  getBox("partial_charge").checked = false;
+  getBox("e_geometry").checked = false;
+  getBox("m_geometry").checked = false;
+  getBox("bond_angle").checked = false;
+  getBox("aca_bond_angle").checked = false;
+  getBox("ace_bond_angle").checked = false;
+  getBox("ece_bond_angle").checked = false;
+  getBox("ecen_bond_angle").checked = false;
+  getBox("ecef_bond_angle").checked = false;
+}
+
 function getCurrentMolecule(){
   moleculeSelect = document.getElementById("configuration");
   return moleculeSelect.options[moleculeSelect.selectedIndex].molecule;
@@ -182,6 +186,9 @@ function toggleSpin() {
 
 function toggleLonePair() {
   if (getBox('lone_pair').checked) {
+    getBox('isosurface').checked = false;
+    Jmol.script(main, 'isosurface OFF;');
+    Jmol.script(main, 'lcaoCartoon off');
     Jmol.script(main, getCurrentMolecule().commands.LP);
   } else {
     Jmol.script(main, 'lcaoCartoon OFF; isosurface OFF;');
@@ -214,7 +221,14 @@ function toggleMGeometry() {
 }
 
 function toggleIsosurface() {
-  console.log("Isosurface");
+  if (getBox('isosurface').checked) {
+    Jmol.script(main, 'isosurface off');
+    Jmol.script(main, 'lcaoCartoon off');
+    Jmol.script(main, 'isosurface vdw; isosurface translucent;');
+    getBox('lone_pair').checked = false;
+  } else {
+    Jmol.script(main, 'select *; isosurface off;');
+  }
 }
 
 function togglePartialCharges() {
@@ -222,26 +236,80 @@ function togglePartialCharges() {
 }
 
 function toggleBondAngle() {
-  console.log("Bond Angle");
+  getBox('aca_bond_angle').checked = false;
+  getBox('ace_bond_angle').checked = false;
+  getBox('ece_bond_angle').checked = false;
+  getBox('ecef_bond_angle').checked = false;
+  getBox('ecen_bond_angle').checked = false;
+  if (getBox('bond_angle').checked) {
+    Jmol.script(main, getCurrentMolecule().commands.BA);
+  } else {
+    Jmol.script(main, 'measure off');
+  }
 }
 
 function toggleACABondAngle() {
-  console.log("ACA Bond Angle");
+  Jmol.script(main, "measure off;");
+  getBox('ace_bond_angle').checked = false;
+  getBox('ece_bond_angle').checked = false;
+  getBox('ecef_bond_angle').checked = false;
+  getBox('ecen_bond_angle').checked = false;
+  if (getBox('aca_bond_angle').checked) {
+    Jmol.script(main, getCurrentMolecule().commands.ACA);
+  } else {
+    Jmol.script(main, 'measure off');
+  }
 }
 
 function toggleACEBondAngle() {
-  console.log("ACE Bond Angle");
+  Jmol.script(main, "measure off;");
+  getBox('aca_bond_angle').checked = false;
+  getBox('ece_bond_angle').checked = false;
+  getBox('ecef_bond_angle').checked = false;
+  getBox('ecen_bond_angle').checked = false;
+  if (getBox('ace_bond_angle').checked) {
+    Jmol.script(main, getCurrentMolecule().commands.ACE);
+  } else {
+    Jmol.script(main, 'measure off');
+  }
 }
 
 function toggleECEBondAngle() {
-  console.log("ECE Bond Angle");
+  Jmol.script(main, "measure off;");
+  getBox('aca_bond_angle').checked = false;
+  getBox('ace_bond_angle').checked = false;
+  getBox('ecef_bond_angle').checked = false;
+  getBox('ecen_bond_angle').checked = false;
+  if (getBox('ece_bond_angle').checked) {
+    Jmol.script(main, getCurrentMolecule().commands.ECE);
+  } else {
+    Jmol.script(main, 'measure off');
+  }
 }
 
 function toggleECENBondAngle() {
-  console.log("ECEN Bond Angle");
+  Jmol.script(main, "measure off;");
+  getBox('aca_bond_angle').checked = false;
+  getBox('ace_bond_angle').checked = false;
+  getBox('ece_bond_angle').checked = false;
+  getBox('ecef_bond_angle').checked = false;
+  if (getBox('ecen_bond_angle').checked) {
+    Jmol.script(main, getCurrentMolecule().commands.ECEN);
+  } else {
+    Jmol.script(main, 'measure off');
+  }
 }
 function toggleECEFBondAngle() {
-  console.log("ECEF Bond Angle");
+  Jmol.script(main, "measure off;");
+  getBox('aca_bond_angle').checked = false;
+  getBox('ace_bond_angle').checked = false;
+  getBox('ece_bond_angle').checked = false;
+  getBox('ecen_bond_angle').checked = false;
+  if (getBox('ecef_bond_angle').checked) {
+    Jmol.script(main, getCurrentMolecule().commands.ECEF);
+  } else {
+    Jmol.script(main, 'measure off');
+  }
 }
 
 

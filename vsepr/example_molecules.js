@@ -141,7 +141,7 @@ let molecules = {
 		<p>(put tetrahedron JSmol here)</p>
     `,
     commands: {
-      BA: true,
+      BA: "measure ({2}) ({0}) ({3});",
       IS: true,
     }
   },
@@ -162,7 +162,7 @@ let molecules = {
       LP: "select atomno=1; lcaoCartoon SCALE 1.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d;",
       IS: true,
       PC: true,
-      BA: true,
+      BA: "measure ({2}) ({0}) ({3});",
     }
   },
   H2O: {
@@ -182,7 +182,7 @@ let molecules = {
       LP: "select atomno=1; lcaoCartoon SCALE 1.3 COLOR TRANSLUCENT [31,240,31] CREATE sp3c; lcaoCartoon CREATE sp3d;",
       IS: true,
       PC: true,
-      BA: true
+      BA: "measure ({2}) ({0}) ({1});"
     }
   },
   PF5: {
@@ -202,8 +202,8 @@ let molecules = {
     `,
     commands: {
       IS: true,
-      ACE: true,
-      ECE: true
+      ACE: "measure ({1}) ({0}) ({5});",
+      ECE: "measure ({4}) ({0}) ({5});"
     }
   },
   SF4: {
@@ -223,9 +223,9 @@ let molecules = {
     commands: {
       LP: "select atomno=1; lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3de;",
       IS: true,
-      ACE: true,
-      ACA: true,
-      ECE: true
+      ACE: "measure ({1}) ({0}) ({3});",
+      ACA: "measure ({4}) ({0}) ({3});",
+      ECE: "measure ({1}) ({0}) ({2});"
     }
   },
   ClF3: {
@@ -245,8 +245,8 @@ let molecules = {
     commands: {
       LP: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp3de; lcaoCartoon CREATE sp3dd;",
       IS: true,
-      ACE: true,
-      ACA: true
+      ACE: "measure ({1}) ({0}) ({3});",
+      ACA: "measure ({1}) ({0}) ({2});"
     }
   },
   XeF2: {    
@@ -265,8 +265,8 @@ let molecules = {
     `,
     commands: {
       LP: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp3de; lcaoCartoon CREATE sp3dd; lcaoCartoon CREATE sp3dc;",
-      IS: true,
-      ACA: true
+      // IS: true,
+      ACA: "measure ({1}) ({0}) ({2});"
     }
   },
   SF6: {
@@ -286,7 +286,7 @@ let molecules = {
     `,
     commands: {
       IS: true,
-      BA: true
+      BA: "measure ({6}) ({0}) ({1}); measure ({1}) ({0}) ({3});"
     }
   },
   IF5: {
@@ -305,9 +305,9 @@ let molecules = {
     `,
     commands: {
       LP: "lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d2f;",
-      ECEN: true,
-      ECEF: true,
-      ACE: true,
+      ECEN: "measure ({1}) ({0}) ({4});",
+      ECEF: "measure ({1}) ({0}) ({2});",
+      ACE: "measure ({1}) ({0}) ({5});",
     }
   },
   XeF4: {
@@ -327,8 +327,8 @@ let molecules = {
     commands: {
       LP: "select atomno=1; lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d2f; lcaoCartoon CREATE sp3d2e;",
       IS: true,
-      ECEF: true,
-      ECEN: true
+      ECEF: "measure ({4}) ({0}) ({3});",
+      ECEN: "measure ({2}) ({0}) ({3});"
     }
   },
 }
