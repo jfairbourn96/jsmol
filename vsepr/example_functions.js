@@ -215,7 +215,7 @@ function changeColor(color) {
 
 function toggleEGeometry() {
   getBox('m_geometry').checked = false;
-  Jmol.script(main, 'draw OFF; color {atomno<4} OPAQUE;');    
+  Jmol.script(main, 'draw OFF; color {atomno<10} OPAQUE;');    
   if (getBox('e_geometry').checked) {
     Jmol.script(main, getCurrentMolecule().commands.EG);
   }
@@ -223,7 +223,7 @@ function toggleEGeometry() {
 
 function toggleMGeometry() {
   getBox('e_geometry').checked = false;
-  Jmol.script(main, 'draw OFF; color {atomno<4} OPAQUE;');    
+  Jmol.script(main, 'draw OFF; color {atomno<10} OPAQUE;');    
   if (getBox('m_geometry').checked) {
     Jmol.script(main, getCurrentMolecule().commands.MG);
   }

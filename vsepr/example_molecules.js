@@ -55,8 +55,8 @@ let molecules = {
     <img src="../jpegs/BeH2 chemdraw.gif" width="98" height="20" alt=""/>
     `,
     commands: {
-      EG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightgreen (atomno=2) (atomno=3);",
-      MG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightblue (atomno=2) (atomno=3);"
+      EG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightgreen LINE [@3,@2];",
+      MG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightblue LINE [@3,@2];"
     },
   },
   CO2: {
@@ -75,8 +75,8 @@ let molecules = {
     `,
     commands: {
       PC: "if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent;",
-      EG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightgreen (atomno=1) (atomno=2);",
-      MG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightblue (atomno=1) (atomno=2);"
+      EG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightgreen LINE [@1,@2];",
+      MG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightblue LINE [@1,@2];"
     }
   },
   N2: {
@@ -95,7 +95,10 @@ let molecules = {
     <p>The triple bond is formed from one sigma and two pi bonds. The pi bonds are formed from overlap of nonhybridized p orbitals that are oriented perpendicular to each other (e.g. <font color="#00FF00">p<sub>y</sub> </font>and <font color="#0000FF">p<sub>z</sub></font>, shown in <font color="#00FF00">green</font> and<font color="#0000FF"> blue</font>) </p> 
     <img src="../jpegs/N2 p orbitals chemdraw.gif" width="135" height="101" alt=""/>     
     `,
-    commands: {}
+    commands: {
+      EG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightgreen LINE [@1,@2];",
+      MG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightblue LINE [@1,@2];"
+  }
   },
   BH3: {
     e_domains: 3,
@@ -110,7 +113,10 @@ let molecules = {
     <p>There are three bonded domains on B and no lone pairs, giving trigonal planar electron-domain and molecular geometries.</p>
 	  <img src="../jpegs/BH3 chemdraw with angles.gif" width="119" height="89" alt=""/>
     `,
-    commands: {}
+    commands: {
+      EG: `color {atomno<5} TRANSLUCENT 4; draw ID e_geo1 DIAMETER 55 COLOR lightgreen LINE [@4,@3,@2,@4];`,
+      MG: `color {atomno<5} TRANSLUCENT 4; draw ID e_geo1 DIAMETER 55 COLOR lightblue LINE [@4,@3,@2,@4];`,
+    }
   },
   SO2: {
     e_domains: 3,
@@ -127,7 +133,9 @@ let molecules = {
     `,
     commands: {
       LP: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp2c;",
-      IS: true
+      IS: true,
+      EG: `color {atomno<5} TRANSLUCENT 4; draw ID e_geo LINE [@2, @3, {0, -2.142, 0}, @2] DIAMETER 55 COLOR lightgreen;`,
+      MG: `color {atomno<5} TRANSLUCENT 4; draw ID m_geo LINE [@2, @1, @3] DIAMETER 55 COLOR lightblue;`
     }
   },
   CH4: {
@@ -143,11 +151,12 @@ let molecules = {
     <p>There are four bonded domains on C and no lone pairs, giving tetrahedral electron-domain and molecular geometries (AX<sub>4</sub>). </p>
 	  <img src="../jpegs/CH4 chemdraw with bond angle.gif" width="124" height="88" alt=""/>
 	  <p>Shown below is a tetrahedron, the geometric shape for which the term "tetrahedral geometry" was derived. A tetrahedron has four triangular faces formed by connecting lines between the four unique sets of three vertex corners. A molecule with four electron domains on a central atom can be superimposed on a tetrahedron, with the central atom (C) occupying the center of the tetrahedron, and the electron pairs pointing towards the four vertex corners.  </p>
-		<p>(put tetrahedron JSmol here)</p>
     `,
     commands: {
       BA: "measure ({2}) ({0}) ({3});",
       IS: true,
+      EG: `color {atomno<6} TRANSLUCENT 4; draw ID e_geo LINE [@5, @4, @2, @5, @3, @2, @5, @4, @3, @5] DIAMETER 40 COLOR lightgreen;`,
+      MG: `color {atomno<6} TRANSLUCENT 4; draw ID e_geo LINE [@5, @4, @2, @5, @3, @2, @5, @4, @3, @5] DIAMETER 40 COLOR lightblue;`
     }
   },
   NH3: {
