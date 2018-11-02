@@ -54,7 +54,10 @@ let molecules = {
     <p>There are two bonded domains on Be and no lone pairs, giving linear electron-domain and molecular geometries.</p>
     <img src="../jpegs/BeH2 chemdraw.gif" width="98" height="20" alt=""/>
     `,
-    commands: {},
+    commands: {
+      EG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightgreen (atomno=2) (atomno=3);",
+      MG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightblue (atomno=2) (atomno=3);"
+    },
   },
   CO2: {
     e_domains: 2,
@@ -71,7 +74,9 @@ let molecules = {
     <img src="../jpegs/CO2.gif" alt="CO2 structure" width="180" height="85">
     `,
     commands: {
-      PC: true
+      PC: "if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent;",
+      EG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightgreen (atomno=1) (atomno=2);",
+      MG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightblue (atomno=1) (atomno=2);"
     }
   },
   N2: {
@@ -161,7 +166,7 @@ let molecules = {
     commands: {
       LP: "select atomno=1; lcaoCartoon SCALE 1.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d;",
       IS: true,
-      PC: true,
+      PC: "if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent",
       BA: "measure ({2}) ({0}) ({3});",
     }
   },
@@ -181,7 +186,7 @@ let molecules = {
     commands: {
       LP: "select atomno=1; lcaoCartoon SCALE 1.3 COLOR TRANSLUCENT [31,240,31] CREATE sp3c; lcaoCartoon CREATE sp3d;",
       IS: true,
-      PC: true,
+      PC: "if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent",
       BA: "measure ({2}) ({0}) ({1});"
     }
   },

@@ -187,6 +187,7 @@ function toggleSpin() {
 function toggleLonePair() {
   if (getBox('lone_pair').checked) {
     getBox('isosurface').checked = false;
+    getBox('partial_charge').checked = false;
     Jmol.script(main, 'isosurface OFF;');
     Jmol.script(main, 'lcaoCartoon off');
     Jmol.script(main, getCurrentMolecule().commands.LP);
@@ -213,14 +214,23 @@ function changeColor(color) {
 }
 
 function toggleEGeometry() {
-  console.log("NOTHIIIIIIING");
+  getBox('m_geometry').checked = false;
+  Jmol.script(main, 'draw OFF; color {atomno<4} OPAQUE;');    
+  if (getBox('e_geometry').checked) {
+    Jmol.script(main, getCurrentMolecule().commands.EG);
+  }
 }
 
 function toggleMGeometry() {
-  console.log("MORE NOTHIIIIIIING");
+  getBox('e_geometry').checked = false;
+  Jmol.script(main, 'draw OFF; color {atomno<4} OPAQUE;');    
+  if (getBox('m_geometry').checked) {
+    Jmol.script(main, getCurrentMolecule().commands.MG);
+  }
 }
 
 function toggleIsosurface() {
+  getBox('partial_charge').checked = false;
   if (getBox('isosurface').checked) {
     Jmol.script(main, 'isosurface off');
     Jmol.script(main, 'lcaoCartoon off');
@@ -232,7 +242,13 @@ function toggleIsosurface() {
 }
 
 function togglePartialCharges() {
-  console.log("Partial Charges");
+  Jmol.script(main, 'isosurface off');
+  Jmol.script(main, 'lcaoCartoon off');
+  getBox('lone_pair').checked = false;
+  getBox('isosurface').checked = false;
+  if (getBox('partial_charge').checked) {
+    Jmol.script(main, getCurrentMolecule().commands.PC);
+  }
 }
 
 function toggleBondAngle() {
