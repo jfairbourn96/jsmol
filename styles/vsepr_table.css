@@ -1,8 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
+/* Authors: Justin Fairbourn and Scott Ensign */
+/* Created at Utah State University with support from the Chemistry department and the Center for Innovative Design and Instruction.*/
 body {
-	/* Just to differentiate between live and my version. */
-	background-color: lightgrey
+	background-color: lightgrey;
+	font-family: Arial
 }
 h2 {
 	color: #000099;

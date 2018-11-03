@@ -96,6 +96,7 @@ let molecules = {
     <img src="../jpegs/N2 p orbitals chemdraw.gif" width="135" height="101" alt=""/>     
     `,
     commands: {
+      LP: "select *; lcaoCartoon ON; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE spb;",
       EG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightgreen LINE [@1,@2];",
       MG: "color {atomno<4} TRANSLUCENT 4; draw e_geo DIAMETER 65 COLOR lightblue LINE [@1,@2];"
   }
@@ -177,6 +178,7 @@ let molecules = {
       IS: true,
       PC: "if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent",
       BA: "measure ({2}) ({0}) ({3});",
+      MG: `color {atomno<5} TRANSLUCENT 4; draw ID e_geo LINE [@1, @2, @3, @1, @2, @4, @1, @3, @4, @1] DIAMETER 40 COLOR lightblue;`,
     }
   },
   H2O: {
@@ -196,7 +198,8 @@ let molecules = {
       LP: "select atomno=1; lcaoCartoon SCALE 1.3 COLOR TRANSLUCENT [31,240,31] CREATE sp3c; lcaoCartoon CREATE sp3d;",
       IS: true,
       PC: "if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent",
-      BA: "measure ({2}) ({0}) ({1});"
+      BA: "measure ({2}) ({0}) ({1});",
+      MG: `color {atomno<5} TRANSLUCENT 4; draw ID e_geo LINE [@2, @1, @3] DIAMETER 72 COLOR lightblue`,
     }
   },
   PF5: {
@@ -212,12 +215,14 @@ let molecules = {
     <p>There are five bonded domains on P and no lone pairs, giving trigonal pyramidal electron-domain and molecular geometries. </p>
 		<img src="../jpegs/PF5 chemdraw with angles.gif" width="95" height="99" alt=""/>
 		<p>Shown below is a trigonal bipyramid, the geometric shape for which the term "trigonal bipyramidal geometry" was derived. There are three &quot;equatorial&quot; electron domains which lie in the same  plane as the central P atom, forming a trigonal planar structure. The two remaining electron domains are at 90 degree angles to the trigonal plane. By themselves, the two axial electron domains and the central atom form a linear structure, with the two axial electron domains separated by a 180 degree angle.</p>
-		<p>(put trigonal bipyramid JSmol here)</p>
     `,
     commands: {
       IS: true,
       ACE: "measure ({1}) ({0}) ({5});",
-      ECE: "measure ({4}) ({0}) ({5});"
+      ECE: "measure ({4}) ({0}) ({5});",
+      MG: `color {atomno<7} TRANSLUCENT 4; 
+        draw ID e_geo2 LINE [@2, @4, @5, @2, @4, @6, @2, @5, @6] DIAMETER 35 COLOR lightblue;
+        draw ID e_geo3 LINE [@3, @4, @5, @3, @4, @6, @3, @5, @6] DIAMETER 35 COLOR lightblue;`
     }
   },
   SF4: {
@@ -239,7 +244,10 @@ let molecules = {
       IS: true,
       ACE: "measure ({1}) ({0}) ({3});",
       ACA: "measure ({4}) ({0}) ({3});",
-      ECE: "measure ({1}) ({0}) ({2});"
+      ECE: "measure ({1}) ({0}) ({2});",
+      MG: `color {atomno<6} TRANSLUCENT 4; 
+        draw ID e_geo1 LINE [@2, @1, @5] DIAMETER 50 COLOR lightblue;
+        draw ID e_geo2 LINE [@3, @1, @4] DIAMETER 50 COLOR lightblue;`
     }
   },
   ClF3: {
@@ -260,7 +268,10 @@ let molecules = {
       LP: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp3de; lcaoCartoon CREATE sp3dd;",
       IS: true,
       ACE: "measure ({1}) ({0}) ({3});",
-      ACA: "measure ({1}) ({0}) ({2});"
+      ACA: "measure ({1}) ({0}) ({2});",
+      MG: `color {atomno<5} TRANSLUCENT 4; 
+        draw ID e_geo1 LINE [@2, @1, @4] DIAMETER 50 COLOR lightblue;
+        draw ID e_geo2 LINE [@3, @1] DIAMETER 50 COLOR lightblue;`
     }
   },
   XeF2: {    
@@ -280,7 +291,8 @@ let molecules = {
     commands: {
       LP: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp3de; lcaoCartoon CREATE sp3dd; lcaoCartoon CREATE sp3dc;",
       // IS: true,
-      ACA: "measure ({1}) ({0}) ({2});"
+      ACA: "measure ({1}) ({0}) ({2});",
+      MG: `color {atomno<4} TRANSLUCENT 4; draw ID e_geo1 LINE [@2, @3] DIAMETER 50 COLOR lightblue;`
     }
   },
   SF6: {
@@ -296,11 +308,12 @@ let molecules = {
     <p>There are six bonded domains on S and no lone pairs, giving octahedral electron-domain and molecular geometries. </p>
 		<img src="../jpegs/SF6 chemdraw.gif" width="95" height="99" alt=""/></p>
 		<p>Shown below is an <strong>octahedron</strong>, the geometric shape for which the term "octahedral geometry" was derived. The central atom lies at the center of the molecule. Four atoms lie in a common &quot;square plane&quot;, forming 90 degree bond angles with the central atom. Two atoms are at 90 degree angles to the atoms lying in the square plane. With the &quot;spin&quot; on, note how the molecule rotates about an axis where four terminal atoms are in an equatorial positions, while the two additional atoms are at axial positions. However, there are no &quot;true&quot; equatorial and axial positions since the molecule is completely symmetrical. Turn the &quot;spin&quot; off and rotate the molecule into the plane of the screen to see how atoms you perceive as equatorial and axial swap positions. Then turn the spin on again to see the molecule rotate about the new &quot;equator&quot;. Note how all the bond angles between nearest atoms are 90 degrees. Contrast this with a molcule with trigonal bipyramidal geometry, where the axial and equatorial positions are fixed, and two distinct bond angles are present between nearest atoms (120 and 90 degrees).
-    <h2>put octahedron jsmol here</h2>
     `,
     commands: {
       IS: true,
-      BA: "measure ({6}) ({0}) ({1}); measure ({1}) ({0}) ({3});"
+      BA: "measure ({6}) ({0}) ({1}); measure ({1}) ({0}) ({3});",
+      MG: `color {atomno<8} TRANSLUCENT 4; 
+        draw ID e_geo LINE [@5, @7, @4, @6, @5, @2, @4, @6, @2, @7, @3, @6, @4, @3, @5] DIAMETER 35 COLOR lightblue;`
     }
   },
   IF5: {
@@ -322,6 +335,8 @@ let molecules = {
       ECEN: "measure ({1}) ({0}) ({4});",
       ECEF: "measure ({1}) ({0}) ({2});",
       ACE: "measure ({1}) ({0}) ({5});",
+      MG: `color {atomno<7} TRANSLUCENT 4; 
+        draw ID e_geo LINE [@5, @2, @4, @3, @5, @6, @4, @2, @6, @3] DIAMETER 35 COLOR lightblue;`
     }
   },
   XeF4: {
@@ -342,7 +357,9 @@ let molecules = {
       LP: "select atomno=1; lcaoCartoon SCALE 2.5 COLOR TRANSLUCENT [31,240,31] CREATE sp3d2f; lcaoCartoon CREATE sp3d2e;",
       IS: true,
       ECEF: "measure ({4}) ({0}) ({3});",
-      ECEN: "measure ({2}) ({0}) ({3});"
+      ECEN: "measure ({2}) ({0}) ({3});",
+      MG: `color {atomno<7} TRANSLUCENT 4; 
+        draw ID e_geo LINE [@5, @2, @4, @3, @5] DIAMETER 35 COLOR lightblue;`
     }
   },
 }

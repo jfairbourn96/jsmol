@@ -137,9 +137,13 @@ function loadNew() {
   getBox("spin").checked = false;
   massUncheck();
 
+  // TODO: Implement the electron geometry and molecular geometry for the other molecules.
+
   // Hide unusable commands.
   molecule.commands.LP ? getBox("co_lone_pair").hidden = false : getBox("co_lone_pair").hidden = true; 
   molecule.commands.IS ? getBox("co_isosurface").hidden = false : getBox("co_isosurface").hidden = true; 
+  molecule.commands.EG ? getBox("co_e_geometry").hidden = false : getBox("co_e_geometry").hidden = true; 
+  molecule.commands.MG ? getBox("co_m_geometry").hidden = false : getBox("co_m_geometry").hidden = true; 
   molecule.commands.PC ? getBox("co_partial_charge").hidden = false : getBox("co_partial_charge").hidden = true; 
   molecule.commands.BA ? getBox("co_bond_angle").hidden = false : getBox("co_bond_angle").hidden = true; 
   molecule.commands.ACA ? getBox("co_aca_bond_angle").hidden = false : getBox("co_aca_bond_angle").hidden = true; 

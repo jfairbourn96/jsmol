@@ -21,6 +21,9 @@ window.addEventListener("load", initWindow);
 function initWindow(){
   let moleculeSelect = document.getElementById("configuration");
   
+  // TODO: Remove this once the VSEPR descriptions are provided.
+  document.getElementById("description").hidden = true;
+  
   // initialize all 14 options within the select
   let options = {
     option_01: document.createElement("option"),
