@@ -60,21 +60,21 @@ function initWindow(){
   options.option_15.molecule = molecules.XeF4;
   
   // give each option an appropriate label
-  options.option_01.label = "BeH2";
-  options.option_02.label = "CO2";
-  options.option_03.label = "N2";
-  options.option_04.label = "BH3";
-  options.option_05.label = "SO2";
-  options.option_06.label = "CH4";
-  options.option_07.label = "NH3";
-  options.option_08.label = "H2O";
-  options.option_09.label = "PF5";
-  options.option_10.label = "SF4";
-  options.option_11.label = "ClF3";
-  options.option_12.label = "XeF2";
-  options.option_13.label = "SF6";
-  options.option_14.label = "IF5";
-  options.option_15.label = "XeF4";
+  options.option_01.innerHTML = molecules.BeH2.formula_html;
+  options.option_02.innerHTML = molecules.CO2.formula_html;
+  options.option_03.innerHTML = molecules.N2.formula_html;
+  options.option_04.innerHTML = molecules.BH3.formula_html;
+  options.option_05.innerHTML = molecules.SO2.formula_html;
+  options.option_06.innerHTML = molecules.CH4.formula_html;
+  options.option_07.innerHTML = molecules.NH3.formula_html;
+  options.option_08.innerHTML = molecules.H2O.formula_html;
+  options.option_09.innerHTML = molecules.PF5.formula_html;
+  options.option_10.innerHTML = molecules.SF4.formula_html;
+  options.option_11.innerHTML = molecules.ClF3.formula_html;
+  options.option_12.innerHTML = molecules.XeF2.formula_html;
+  options.option_13.innerHTML = molecules.SF6.formula_html;
+  options.option_14.innerHTML = molecules.IF5.formula_html;
+  options.option_15.innerHTML = molecules.XeF4.formula_html;
   
   // link each option to the <select> element
   moleculeSelect.add(options.option_01);
