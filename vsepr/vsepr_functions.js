@@ -59,20 +59,20 @@ function initWindow(){
   options.option_14.molecule = molecules.vsepr_14;
   
   // give each option an appropriate label
-  options.option_01.label = "Linear";
-  options.option_02.label = "Linear (2)";
-  options.option_03.label = "Trigonal Planar";
-  options.option_04.label = "Trigonal Planar - Bent";
-  options.option_05.label = "Tetrahedral";
-  options.option_06.label = "Tetrahedral - Trigonal Pyramidal";
-  options.option_07.label = "Tetrahedral - Bent";
-  options.option_08.label = "Trigonal Bipyramidal";
-  options.option_09.label = "Trigonal Bipyramidal - Seesaw";
-  options.option_10.label = "Trigonal Bipyramidal - T-shaped";
-  options.option_11.label = "Trigonal Bipyramidal - Linear";
-  options.option_12.label = "Octahedral";
-  options.option_13.label = "Octahedral - Square Pyramidal";
-  options.option_14.label = "Octahedral - Square Planar";
+  options.option_01.innerHTML = "Linear";
+  options.option_02.innerHTML = "Linear (2)";
+  options.option_03.innerHTML = "Trigonal Planar";
+  options.option_04.innerHTML = "Trigonal Planar - Bent";
+  options.option_05.innerHTML = "Tetrahedral";
+  options.option_06.innerHTML = "Tetrahedral - Trigonal Pyramidal";
+  options.option_07.innerHTML = "Tetrahedral - Bent";
+  options.option_08.innerHTML = "Trigonal Bipyramidal";
+  options.option_09.innerHTML = "Trigonal Bipyramidal - Seesaw";
+  options.option_10.innerHTML = "Trigonal Bipyramidal - T-shaped";
+  options.option_11.innerHTML = "Trigonal Bipyramidal - Linear";
+  options.option_12.innerHTML = "Octahedral";
+  options.option_13.innerHTML = "Octahedral - Square Pyramidal";
+  options.option_14.innerHTML = "Octahedral - Square Planar";
   
   // link each option to the <select> element
   moleculeSelect.add(options.option_01);
@@ -112,7 +112,7 @@ function getURLMol() {
 function loadNew() {
   // load the appropriate molecule
   let molecule = getCurrentMolecule();
-  let loadString = `load  ${molecule.path}; select *; spacefill 0.4; `;
+  let loadString = `load  ${molecule.path}; select *; spacefill 0.3; `;
   let colorString = `select *; color purple; select atomno=${molecule.center_atomno}; color white;`
 
   // Hide the lone pair checkbox if there are no lone pairs
@@ -156,15 +156,15 @@ function toggleLonePair() {
 }
 
 function ballAndStick() {
-  Jmol.script(main, 'wireframe 0.15; spacefill 20%');
+  Jmol.script(main, 'select *; wireframe 0.15; spacefill 30%');
 }
 
 function spacefill() {
-  Jmol.script(main, 'spacefill 100%;');
+  Jmol.script(main, 'select *; spacefill 100%;');
 }
 
 function stick() {
-  Jmol.script(main, 'wireframe 0.2; spacefill off;');
+  Jmol.script(main, 'select *; wireframe 0.2; spacefill off;');
 }
 
 function changeColor(color) {

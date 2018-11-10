@@ -10,7 +10,24 @@ TODO:
 ` $ http-server`
 open the port-website it lists
 
-
+## 11-06 TODO:
+  - Reduce sphere radius for tetrahedral
+  - Show electron orbitals dropdown menu for these four
+    - Ethylene: sigma bonds, toggle p-orbitals, toggle overlaps, sp2
+    - Acetylene: sp
+    - Carbon Monoxide: sp
+    - Formaldehyde: sp2 show lone pairs on O
+  - Textbook create page for the following molecules: 
+  - BOX jsmol december 2017 > pdb files
+    - H2O
+    - NH3
+    - NaCl Lattice
+    - Acetic Acid
+    - Sulfuric Acid
+      - Hydrogen Sulfate Anion
+      - Sulfate Anion
+    - Ethanol Ch2 Slide 48
+    - Dimethyl ether
 
 ## 11-01 TODO:
   - Implement all the bond angle commands

@@ -9,7 +9,7 @@ let info = {
   width: 500,
   j2sPath: "../jsmol/j2s",
   // Change the initial molecule here.
-  script: "load ../PDB/BeH2.mol; spacefill 20%; wireframe 0.15; spin off; frank on; background=white; antialiasDisplay=true; set showMultipleBonds OFF;",
+  script: "load ../PDB/BeH2.mol; spacefill 30%; wireframe 0.15; spin off; frank on; background=white; antialiasDisplay=true; set showMultipleBonds OFF;",
   debug: false
 };
 
@@ -116,7 +116,7 @@ function getURLMol() {
 function loadNew() {
   // load the appropriate molecule
   let molecule = getCurrentMolecule();
-  let loadString = `load  ${molecule.path}; select *; spacefill 0.4; `;
+  let loadString = `load  ${molecule.path}; select *; spacefill 0.3; `;
   // let colorString = `select *; color purple; select atomno=${molecule.center_atomno}; color white;`
 
   // Hide the lone pair checkbox if there are no lone pairs
@@ -201,15 +201,15 @@ function toggleLonePair() {
 }
 
 function ballAndStick() {
-  Jmol.script(main, 'wireframe 0.15; spacefill 20%');
+  Jmol.script(main, 'select *; wireframe 0.15; spacefill 30%');
 }
 
 function spacefill() {
-  Jmol.script(main, 'spacefill 100%;');
+  Jmol.script(main, 'select *; spacefill 100%;');
 }
 
 function stick() {
-  Jmol.script(main, 'wireframe 0.2; spacefill off;');
+  Jmol.script(main, 'select *; wireframe 0.2; spacefill off;');
 }
 
 function changeColor(color) {

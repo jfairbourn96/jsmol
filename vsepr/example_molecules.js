@@ -179,6 +179,11 @@ let molecules = {
       PC: "if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent",
       BA: "measure ({2}) ({0}) ({3});",
       MG: `color {atomno<5} TRANSLUCENT 4; draw ID e_geo LINE [@1, @2, @3, @1, @2, @4, @1, @3, @4, @1] DIAMETER 40 COLOR lightblue;`,
+      // First, get two vectors in the plane created by the H atoms
+      // Then calculate the orthogonal vector to that plane
+      // Then get the unit vector to the orthogonal vector
+      // Multiply it by the angstrom scalar value
+      EG: `color {atomno<5} TRANSLUCENT 4; draw ID e_geo LINE [@2, {-0.480828, -0.83283, -0.3399966}, @3, @4, {-0.480828, -0.83283, -0.3399966}, @3, @2, @4] DIAMETER 40 COLOR lightgreen;`,
     }
   },
   H2O: {
@@ -199,7 +204,8 @@ let molecules = {
       IS: true,
       PC: "if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep; isosurface translucent",
       BA: "measure ({2}) ({0}) ({1});",
-      MG: `color {atomno<5} TRANSLUCENT 4; draw ID e_geo LINE [@2, @1, @3] DIAMETER 72 COLOR lightblue`,
+      MG: `color {atomno<4} TRANSLUCENT 4; draw ID m_geo LINE [@2, @1, @3] DIAMETER 72 COLOR lightblue`,
+      EG: `color {atomno<4} TRANSLUCENT 4; draw ID e_geo LINE [@2, {0.0428, -0.6236, 0.7405}, @3, {-0.9278, -0.0318, -0.2783}, {0.0428, -0.6236, 0.7405}, @3, @2, {-0.9278, -0.0318, -0.2783}] DIAMETER 40 COLOR lightgreen;`
     }
   },
   PF5: {
@@ -222,7 +228,10 @@ let molecules = {
       ECE: "measure ({4}) ({0}) ({5});",
       MG: `color {atomno<7} TRANSLUCENT 4; 
         draw ID e_geo2 LINE [@2, @4, @5, @2, @4, @6, @2, @5, @6] DIAMETER 35 COLOR lightblue;
-        draw ID e_geo3 LINE [@3, @4, @5, @3, @4, @6, @3, @5, @6] DIAMETER 35 COLOR lightblue;`
+        draw ID e_geo3 LINE [@3, @4, @5, @3, @4, @6, @3, @5, @6] DIAMETER 35 COLOR lightblue;`,      
+      EG: `color {atomno<7} TRANSLUCENT 4; 
+        draw ID e_geo2 LINE [@2, @4, @5, @2, @4, @6, @2, @5, @6] DIAMETER 35 COLOR lightgreen;
+        draw ID e_geo3 LINE [@3, @4, @5, @3, @4, @6, @3, @5, @6] DIAMETER 35 COLOR lightgreen;`
     }
   },
   SF4: {
@@ -313,7 +322,9 @@ let molecules = {
       IS: true,
       BA: "measure ({6}) ({0}) ({1}); measure ({1}) ({0}) ({3});",
       MG: `color {atomno<8} TRANSLUCENT 4; 
-        draw ID e_geo LINE [@5, @7, @4, @6, @5, @2, @4, @6, @2, @7, @3, @6, @4, @3, @5] DIAMETER 35 COLOR lightblue;`
+        draw ID e_geo LINE [@5, @7, @4, @6, @5, @2, @4, @6, @2, @7, @3, @6, @4, @3, @5] DIAMETER 35 COLOR lightblue;`,
+      EG: `color {atomno<8} TRANSLUCENT 4; 
+        draw ID e_geo LINE [@5, @7, @4, @6, @5, @2, @4, @6, @2, @7, @3, @6, @4, @3, @5] DIAMETER 35 COLOR lightgreen;`
     }
   },
   IF5: {
