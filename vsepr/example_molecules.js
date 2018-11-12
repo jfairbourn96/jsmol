@@ -255,8 +255,11 @@ let molecules = {
       ACA: "measure ({4}) ({0}) ({3});",
       ECE: "measure ({1}) ({0}) ({2});",
       MG: `color {atomno<6} TRANSLUCENT 4; 
-        draw ID e_geo1 LINE [@2, @1, @5] DIAMETER 50 COLOR lightblue;
-        draw ID e_geo2 LINE [@3, @1, @4] DIAMETER 50 COLOR lightblue;`
+        draw ID m_geo1 LINE [@2, @1, @5] DIAMETER 50 COLOR lightblue;
+        draw ID m_geo2 LINE [@3, @1, @4] DIAMETER 50 COLOR lightblue;`,      
+      EG: `color {atomno<7} TRANSLUCENT 4; 
+        draw ID e_geo1 LINE [@2, @4, @5, @2, @4, {-1.6496, 0.4515, 0.5073}, @2, @5, {-1.6496, 0.4515, 0.5073}] DIAMETER 35 COLOR lightgreen;
+        draw ID e_geo2 LINE [@3, @4, @5, @3, @4, {-1.6496, 0.4515, 0.5073}, @3, @5, {-1.6496, 0.4515, 0.5073}] DIAMETER 35 COLOR lightgreen;`
     }
   },
   ClF3: {
