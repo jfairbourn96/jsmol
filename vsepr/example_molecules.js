@@ -227,11 +227,11 @@ let molecules = {
       ACE: "measure ({1}) ({0}) ({5});",
       ECE: "measure ({4}) ({0}) ({5});",
       MG: `color {atomno<7} TRANSLUCENT 4; 
-        draw ID e_geo2 LINE [@2, @4, @5, @2, @4, @6, @2, @5, @6] DIAMETER 35 COLOR lightblue;
-        draw ID e_geo3 LINE [@3, @4, @5, @3, @4, @6, @3, @5, @6] DIAMETER 35 COLOR lightblue;`,      
+        draw ID m_geo1 LINE [@2, @4, @5, @2, @4, @6, @2, @5, @6] DIAMETER 35 COLOR lightblue;
+        draw ID m_geo2 LINE [@3, @4, @5, @3, @4, @6, @3, @5, @6] DIAMETER 35 COLOR lightblue;`,      
       EG: `color {atomno<7} TRANSLUCENT 4; 
-        draw ID e_geo2 LINE [@2, @4, @5, @2, @4, @6, @2, @5, @6] DIAMETER 35 COLOR lightgreen;
-        draw ID e_geo3 LINE [@3, @4, @5, @3, @4, @6, @3, @5, @6] DIAMETER 35 COLOR lightgreen;`
+        draw ID e_geo1 LINE [@2, @4, @5, @2, @4, @6, @2, @5, @6] DIAMETER 35 COLOR lightgreen;
+        draw ID e_geo2 LINE [@3, @4, @5, @3, @4, @6, @3, @5, @6] DIAMETER 35 COLOR lightgreen;`
     }
   },
   SF4: {
@@ -282,8 +282,11 @@ let molecules = {
       ACE: "measure ({1}) ({0}) ({3});",
       ACA: "measure ({1}) ({0}) ({2});",
       MG: `color {atomno<5} TRANSLUCENT 4; 
-        draw ID e_geo1 LINE [@2, @1, @4] DIAMETER 50 COLOR lightblue;
-        draw ID e_geo2 LINE [@3, @1] DIAMETER 50 COLOR lightblue;`
+        draw ID m_geo1 LINE [@2, @1, @4] DIAMETER 50 COLOR lightblue;
+        draw ID m_geo2 LINE [@3, @1] DIAMETER 50 COLOR lightblue;`,
+      EG: `color {atomno<5} TRANSLUCENT 4; 
+      draw ID e_geo1 LINE [@2, @4, {0.0, -0.9625, 1.3041}, @2, @4, {0.0, -0.9625, -1.3041}, @2, {0.0, -0.9625, 1.3041}, {0.0, -0.9625, -1.3041}] DIAMETER 35 COLOR lightgreen;
+      draw ID e_geo2 LINE [@3, @4, {0.0, -0.9625, 1.3041}, @3, @4, {0.0, -0.9625, -1.3041}, @3, {0.0, -0.9625, 1.3041}, {0.0, -0.9625, -1.3041}] DIAMETER 35 COLOR lightgreen;`
     }
   },
   XeF2: {    
@@ -304,7 +307,10 @@ let molecules = {
       LP: "select atomno=1; lcaoCartoon SCALE 2 COLOR TRANSLUCENT [31,240,31] CREATE sp3de; lcaoCartoon CREATE sp3dd; lcaoCartoon CREATE sp3dc;",
       // IS: true,
       ACA: "measure ({1}) ({0}) ({2});",
-      MG: `color {atomno<4} TRANSLUCENT 4; draw ID e_geo1 LINE [@2, @3] DIAMETER 50 COLOR lightblue;`
+      MG: `color {atomno<4} TRANSLUCENT 4; draw ID e_geo1 LINE [@2, @3] DIAMETER 50 COLOR lightblue;`,
+      EG: `color {atomno<5} TRANSLUCENT 4; 
+      draw ID e_geo1 LINE [@2, @4, {0.0, -0.9625, 1.3041}, @2, @4, {0.0, -0.9625, -1.3041}, @2, {0.0, -0.9625, 1.3041}, {0.0, -0.9625, -1.3041}] DIAMETER 35 COLOR lightgreen;
+      draw ID e_geo2 LINE [@3, @4, {0.0, -0.9625, 1.3041}, @3, @4, {0.0, -0.9625, -1.3041}, @3, {0.0, -0.9625, 1.3041}, {0.0, -0.9625, -1.3041}] DIAMETER 35 COLOR lightgreen;`
     }
   },
   SF6: {
@@ -350,7 +356,9 @@ let molecules = {
       ECEF: "measure ({1}) ({0}) ({2});",
       ACE: "measure ({1}) ({0}) ({5});",
       MG: `color {atomno<7} TRANSLUCENT 4; 
-        draw ID e_geo LINE [@5, @2, @4, @3, @5, @6, @4, @2, @6, @3] DIAMETER 35 COLOR lightblue;`
+        draw ID e_geo LINE [@5, @2, @4, @3, @5, @6, @4, @2, @6, @3] DIAMETER 35 COLOR lightblue;`,
+      EG: `color {atomno<7} TRANSLUCENT 4; 
+        draw ID e_geo LINE [@5, {0,0,-1.91}, @4, @6, @5, @2, @4, @6, @2, {0,0,-1.91}, @3, @6, @4, @3, @5] DIAMETER 35 COLOR lightgreen;`
     }
   },
   XeF4: {
@@ -373,7 +381,9 @@ let molecules = {
       ECEF: "measure ({4}) ({0}) ({3});",
       ECEN: "measure ({2}) ({0}) ({3});",
       MG: `color {atomno<7} TRANSLUCENT 4; 
-        draw ID e_geo LINE [@5, @2, @4, @3, @5] DIAMETER 35 COLOR lightblue;`
+        draw ID e_geo LINE [@5, @2, @4, @3, @5] DIAMETER 35 COLOR lightblue;`,
+      EG: `color {atomno<8} TRANSLUCENT 4; 
+        draw ID e_geo LINE [@5, {2.25,0,0}, @4, {-2.25,0,0}, @5, @2, @4, {-2.25,0,0}, @2, {2.25,0,0}, @3, {-2.25,0,0}, @4, @3, @5] DIAMETER 35 COLOR lightgreen;`
     }
   },
 }
