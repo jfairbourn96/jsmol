@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<!--	Authors: Justin Fairbourn and Scott Ensign -->
+<!--	Created at Utah State University with support from the Chemistry department. -->
+	<meta charset="utf-8">
+	<title>H2O Ice Lesson</title>
+	<link href="styles/lesson_page.css" rel="stylesheet" type="text/css">
+  <script src="../../jsmol/JSmol.min.js"></script>
+  <script>
+    let info = {
+      color: "#FFFFFF", 
+      height: 500,      
+      width: 500,
+      j2sPath: "../../jsmol/j2s",
+      script: "load h2o-ice.pdb;; spacefill 20%; wireframe 0.15; spin off; frank on; background=white; antialiasDisplay=true;",
+      debug: false
+    };
+  </script>
+</head>
+
+<body>
+	<header>
+    <button id="restartButton">B</button>
+		<div id="name" class="app">
+			H<sub>2</sub>O Ice Lesson
+    </div>
+    <button id="refreshButton">R</button>
+	</header>
+		
+	<section class="molecule">
+    <button id="backButton" disabled>Back</button>
+
+    <div id="window" class="app">
+      <script type="text/javascript">
+        Jmol.getApplet("main", info);
+      </script>
+    </div>
+
+    <button id="nextButton">Next</button>
+  </section>
+
+  <footer id="description" class="app">
+  </footer>
+
+  <script src="instruction.js"></script>
+  <script src="lesson.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

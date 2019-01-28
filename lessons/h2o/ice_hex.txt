@@ -1,5 +1,5 @@
 01: Water molecules in ice are arranged in an ordered crystalline lattice called "hexagonal ice".
-    load ../PDB/h2o-ice-hex.pdb;
+    load ../PDB/h2o-ice-hex.pdb;; spacefill 20%; wireframe 0.15; spin off; frank on; background=white; antialiasDisplay=true;
 02: The ordered arrangement of water can be visualized by rotating the assembly of water molecules.
     moveto 3.0 { -462 -771 439 102.85} 100.0 0.0 0.0 {1.1279998 0.0 0.0} 16.976467;
     moveto 2.5 { -661 -365 656 136.67} 100.0 0.0 0.0  {1.1279998 0.0 0.0} 16.976467;
